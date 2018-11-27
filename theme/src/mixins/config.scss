@@ -1,0 +1,6 @@
+$namespace: 'ko';//命名空间
+//- 表示某个块或者某个子元素的多单词之间的连接记号
+$element-separator: '__';//用来链接块和块的子元素；
+$modifier-separator: '--';//下划线用来描述一个块或者块的子元素的一种状态。
+$state-prefix: 'is-';
+

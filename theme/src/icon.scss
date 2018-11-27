@@ -1,0 +1,185 @@
+@import "common/var";
+
+@font-face {
+  font-family: 'dtux-icons';
+  src: url('#{$--font-path}/dtux-icons.woff') format('woff'), /* chrome, firefox */
+       url('#{$--font-path}/dtux-icons.ttf') format('truetype'); /* chrome, firefox, opera, Safari, Android, iOS 4.2+*/
+  font-weight: normal;
+  font-style: normal
+}
+
+[class^="ko-icon-"], [class*=" ko-icon-"] {
+  font-family: 'dtux-icons' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  vertical-align: baseline;
+  display: inline-block;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.ko-icon-info:before { content: "\e61a"; }
+
+.ko-icon-error:before { content: "\e62c"; }
+
+.ko-icon-success:before { content: "\e62d"; }
+
+.ko-icon-warning:before { content: "\e62e"; }
+
+.ko-icon-question:before { content: "\e634"; }
+
+.ko-icon-back:before { content: "\e606"; }
+
+.ko-icon-arrow-left:before { content: "\e600"; }
+
+.ko-icon-arrow-down:before { content: "\e603"; }
+
+.ko-icon-arrow-right:before { content: "\e604"; }
+
+.ko-icon-arrow-up:before { content: "\e605"; }
+
+.ko-icon-caret-left:before { content: "\e60a"; }
+
+.ko-icon-caret-bottom:before { content: "\e60b"; }
+
+.ko-icon-caret-top:before { content: "\e60c"; }
+
+.ko-icon-caret-right:before { content: "\e60e"; }
+
+.ko-icon-d-arrow-left:before { content: "\e610"; }
+
+.ko-icon-d-arrow-right:before { content: "\e613"; }
+
+.ko-icon-minus:before { content: "\e621"; }
+
+.ko-icon-plus:before { content: "\e62b"; }
+
+.ko-icon-remove:before { content: "\e635"; }
+
+.ko-icon-circle-plus:before { content: "\e601"; }
+
+.ko-icon-remove-outline:before { content: "\e63c"; }
+
+.ko-icon-circle-plus-outline:before { content: "\e602"; }
+
+.ko-icon-close:before { content: "\e60f"; }
+
+.ko-icon-check:before { content: "\e611"; }
+
+.ko-icon-circle-close:before { content: "\e607"; }
+
+.ko-icon-circle-check:before { content: "\e639"; }
+
+.ko-icon-circle-close-outline:before { content: "\e609"; }
+
+.ko-icon-circle-check-outline:before { content: "\e63e"; }
+
+.ko-icon-zoom-out:before { content: "\e645"; }
+
+.ko-icon-zoom-in:before { content: "\e641"; }
+
+.ko-icon-d-caret:before { content: "\e615"; }
+
+.ko-icon-sort:before { content: "\e640"; }
+
+.ko-icon-sort-down:before { content: "\e630"; }
+
+.ko-icon-sort-up:before { content: "\e631"; }
+
+.ko-icon-tickets:before { content: "\e63f"; }
+
+.ko-icon-document:before { content: "\e614"; }
+
+.ko-icon-goods:before { content: "\e618"; }
+
+.ko-icon-sold-out:before { content: "\e63b"; }
+
+.ko-icon-news:before { content: "\e625"; }
+
+.ko-icon-message:before { content: "\e61b"; }
+
+.ko-icon-date:before { content: "\e608"; }
+
+.ko-icon-printer:before { content: "\e62f"; }
+
+.ko-icon-time:before { content: "\e642"; }
+
+.ko-icon-bell:before { content: "\e622"; }
+
+.ko-icon-mobile-phone:before { content: "\e624"; }
+
+.ko-icon-service:before { content: "\e63a"; }
+
+.ko-icon-view:before { content: "\e643"; }
+
+.ko-icon-menu:before { content: "\e620"; }
+
+.ko-icon-more:before { content: "\e646"; }
+
+.ko-icon-more-outline:before { content: "\e626"; }
+
+.ko-icon-star-on:before { content: "\e637"; }
+
+.ko-icon-star-off:before { content: "\e63d"; }
+
+.ko-icon-location:before { content: "\e61d"; }
+
+.ko-icon-location-outline:before { content: "\e61f"; }
+
+.ko-icon-phone:before { content: "\e627"; }
+
+.ko-icon-phone-outline:before { content: "\e628"; }
+
+.ko-icon-picture:before { content: "\e629"; }
+
+.ko-icon-picture-outline:before { content: "\e62a"; }
+
+.ko-icon-delete:before { content: "\e612"; }
+
+.ko-icon-search:before { content: "\e619"; }
+
+.ko-icon-edit:before { content: "\e61c"; }
+
+.ko-icon-edit-outline:before { content: "\e616"; }
+
+.ko-icon-rank:before { content: "\e632"; }
+
+.ko-icon-refresh:before { content: "\e633"; }
+
+.ko-icon-share:before { content: "\e636"; }
+
+.ko-icon-setting:before { content: "\e638"; }
+
+.ko-icon-upload:before { content: "\e60d"; }
+
+.ko-icon-upload2:before { content: "\e644"; }
+
+.ko-icon-download:before { content: "\e617"; }
+
+.ko-icon-loading:before { content: "\e61e"; }
+
+.ko-icon-loading {
+  animation: rotating 2s linear infinite;
+}
+
+.ko-icon--right {
+  margin-left: 5px;
+}
+.ko-icon--left {
+  margin-right: 5px;
+}
+
+@keyframes rotating {
+  0% {
+    transform: rotateZ(0deg);
+  }
+  100% {
+    transform: rotateZ(360deg);
+  }
+}
