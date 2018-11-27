@@ -116,9 +116,9 @@ var _temp = function () {
     return;
   }
 
-  __REACT_HOT_LOADER__.register(Col, 'Col', 'src/layout/Col.jsx');
+  __REACT_HOT_LOADER__.register(Col, 'Col', 'src/layout/col.jsx');
 
-  __REACT_HOT_LOADER__.register(_default, 'default', 'src/layout/Col.jsx');
+  __REACT_HOT_LOADER__.register(_default, 'default', 'src/layout/col.jsx');
 }();
 
 ;

@@ -59,8 +59,8 @@ var Row = function (_Component) {
     key: 'render',
     value: function render() {
       return _react2.default.createElement(this.props.tag, {
-        className: this.className('el-row', this.props.justify !== 'start' && 'is-justify-' + this.props.justify, this.props.align !== 'top' && 'is-align-' + this.props.align, {
-          'el-row--flex': this.props.type === 'flex'
+        className: this.className('ko-row', this.props.justify !== 'start' && 'is-justify-' + this.props.justify, this.props.align !== 'top' && 'is-align-' + this.props.align, {
+          'ko-row--flex': this.props.type === 'flex'
         }),
         style: this.style(this.getStyle())
       }, this.props.children);
@@ -97,9 +97,9 @@ var _temp = function () {
     return;
   }
 
-  __REACT_HOT_LOADER__.register(Row, 'Row', 'src/layout/Row.jsx');
+  __REACT_HOT_LOADER__.register(Row, 'Row', 'src/layout/row.jsx');
 
-  __REACT_HOT_LOADER__.register(_default, 'default', 'src/layout/Row.jsx');
+  __REACT_HOT_LOADER__.register(_default, 'default', 'src/layout/row.jsx');
 }();
 
 ;

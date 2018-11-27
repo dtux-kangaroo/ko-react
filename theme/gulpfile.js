@@ -2,23 +2,24 @@
 
 var gulp = require('gulp');
 var sass = require('gulp-sass');
-var autoprefixer = require('gulp-autoprefixer');
-var cssmin = require('gulp-cssmin');
+var postcss = require('gulp-postcss');
+var gulp = require('gulp');
+var autoprefixer = require('autoprefixer');
+var cssnano = require('cssnano');
 
 gulp.task('compile', function() {
+  var plugins = [
+    autoprefixer({browsers: ['last 1 version']}),
+    cssnano()
+];
   return gulp.src('./src/*.scss')
     .pipe(sass.sync())
-    .pipe(autoprefixer({
-      browsers: ['ie > 9', 'last 2 versions'],
-      cascade: false
-    }))
-    .pipe(cssmin())
+    .pipe(postcss(plugins))
     .pipe(gulp.dest('./lib'));
 });
 
 gulp.task('copyfont', function() {
   return gulp.src('./src/fonts/**')
-    .pipe(cssmin())
     .pipe(gulp.dest('./lib/fonts'));
 });
 

@@ -39,7 +39,7 @@ var Icon = function (_Component) {
   (0, _createClass3.default)(Icon, [{
     key: 'render',
     value: function render() {
-      return _react2.default.createElement('i', { style: this.style(), className: this.className('el-icon-' + this.props.name) });
+      return _react2.default.createElement('i', { style: this.style(), className: this.className('ko-icon-' + this.props.name) });
     }
   }]);
   return Icon;
@@ -59,9 +59,9 @@ var _temp = function () {
     return;
   }
 
-  __REACT_HOT_LOADER__.register(Icon, 'Icon', 'src/icon/Icon.jsx');
+  __REACT_HOT_LOADER__.register(Icon, 'Icon', 'src/icon/icon.jsx');
 
-  __REACT_HOT_LOADER__.register(_default, 'default', 'src/icon/Icon.jsx');
+  __REACT_HOT_LOADER__.register(_default, 'default', 'src/icon/icon.jsx');
 }();
 
 ;

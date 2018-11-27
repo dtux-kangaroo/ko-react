@@ -32,8 +32,8 @@ var Row = function (_Component) {
 
   Row.prototype.render = function render() {
     return React.createElement(this.props.tag, {
-      className: this.className('el-row', this.props.justify !== 'start' && 'is-justify-' + this.props.justify, this.props.align !== 'top' && 'is-align-' + this.props.align, {
-        'el-row--flex': this.props.type === 'flex'
+      className: this.className('ko-row', this.props.justify !== 'start' && 'is-justify-' + this.props.justify, this.props.align !== 'top' && 'is-align-' + this.props.align, {
+        'ko-row--flex': this.props.type === 'flex'
       }),
       style: this.style(this.getStyle())
     }, this.props.children);

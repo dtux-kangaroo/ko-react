@@ -2,7 +2,7 @@ import _classCallCheck from 'babel-runtime/helpers/classCallCheck';
 import _possibleConstructorReturn from 'babel-runtime/helpers/possibleConstructorReturn';
 import _inherits from 'babel-runtime/helpers/inherits';
 import React from 'react';
-import { Component } from '../../utils';
+import { Component } from '../utils';
 
 var ButtonGroup = function (_Component) {
   _inherits(ButtonGroup, _Component);

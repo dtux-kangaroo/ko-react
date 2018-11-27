@@ -95,9 +95,9 @@ var _temp = function () {
     return;
   }
 
-  __REACT_HOT_LOADER__.register(Button, 'Button', 'src/button/Button.jsx');
+  __REACT_HOT_LOADER__.register(Button, 'Button', 'src/button/button.jsx');
 
-  __REACT_HOT_LOADER__.register(_default, 'default', 'src/button/Button.jsx');
+  __REACT_HOT_LOADER__.register(_default, 'default', 'src/button/button.jsx');
 }();
 
 ;

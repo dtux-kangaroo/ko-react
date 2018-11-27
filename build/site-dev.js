@@ -2,6 +2,7 @@ const webpack = require('webpack');
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const path = require('path');
 const buildPath = path.resolve(__dirname, '../dist');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 module.exports = {
   mode:"development",
   devtool: 'cheap-eval-source-map',
@@ -60,7 +61,10 @@ module.exports = {
       chunksSortMode:"none"
     }),
     new webpack.NamedModulesPlugin(),
-    new webpack.HotModuleReplacementPlugin()
+    new webpack.HotModuleReplacementPlugin(),
+    new CopyWebpackPlugin([ 
+      {from: './assets/imgs',to:"./imgs"}
+    ])
   ],
   resolve: {
     extensions: ['.js', '.jsx']

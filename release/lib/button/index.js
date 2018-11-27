@@ -4,19 +4,19 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _Button = require('./Button');
+var _button = require('./button');
 
-var _Button2 = _interopRequireDefault(_Button);
+var _button2 = _interopRequireDefault(_button);
 
-var _ButtonGroup = require('./ButtonGroup');
+var _buttonGroup = require('./buttonGroup');
 
-var _ButtonGroup2 = _interopRequireDefault(_ButtonGroup);
+var _buttonGroup2 = _interopRequireDefault(_buttonGroup);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-_Button2.default.Group = _ButtonGroup2.default;
+_button2.default.Group = _buttonGroup2.default;
 
-var _default = _Button2.default;
+var _default = _button2.default;
 exports.default = _default;
 ;
 

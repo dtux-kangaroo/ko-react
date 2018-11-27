@@ -24,7 +24,7 @@ var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
-var _utils = require('../../utils');
+var _utils = require('../utils');
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -58,9 +58,9 @@ var _temp = function () {
     return;
   }
 
-  __REACT_HOT_LOADER__.register(ButtonGroup, 'ButtonGroup', 'src/button/ButtonGroup.jsx');
+  __REACT_HOT_LOADER__.register(ButtonGroup, 'ButtonGroup', 'src/button/buttonGroup.jsx');
 
-  __REACT_HOT_LOADER__.register(_default, 'default', 'src/button/ButtonGroup.jsx');
+  __REACT_HOT_LOADER__.register(_default, 'default', 'src/button/buttonGroup.jsx');
 }();
 
 ;

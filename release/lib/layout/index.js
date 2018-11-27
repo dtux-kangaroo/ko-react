@@ -4,19 +4,19 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _Row = require('./Row');
+var _row = require('./row');
 
-var _Row2 = _interopRequireDefault(_Row);
+var _row2 = _interopRequireDefault(_row);
 
-var _Col = require('./Col');
+var _col = require('./col');
 
-var _Col2 = _interopRequireDefault(_Col);
+var _col2 = _interopRequireDefault(_col);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var _default = {
-  Row: _Row2.default,
-  Col: _Col2.default
+  Row: _row2.default,
+  Col: _col2.default
 };
 exports.default = _default;
 ;

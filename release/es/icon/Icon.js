@@ -14,7 +14,7 @@ var Icon = function (_Component) {
   }
 
   Icon.prototype.render = function render() {
-    return React.createElement('i', { style: this.style(), className: this.className('el-icon-' + this.props.name) });
+    return React.createElement('i', { style: this.style(), className: this.className('ko-icon-' + this.props.name) });
   };
 
   return Icon;

@@ -1,5 +1,5 @@
-import Button from './Button';
-import ButtonGroup from './ButtonGroup';
+import Button from './button';
+import ButtonGroup from './buttonGroup';
 
 Button.Group = ButtonGroup;
 

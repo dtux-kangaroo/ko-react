@@ -5,6 +5,7 @@ const buildPath = path.resolve(__dirname, '../dist');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
 const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 module.exports = {
   mode: "production",
   entry: {
@@ -97,6 +98,9 @@ module.exports = {
       filename: "css/[name].[hash].css",
       chunkFilename: "css/[name].[hash].css"
     }),
+    new CopyWebpackPlugin([ 
+        {from: './assets/imgs',to:"./imgs"}
+     ]),
     new HtmlWebpackPlugin({
       title: "ko",
       filename: 'index.html',
@@ -107,10 +111,7 @@ module.exports = {
         favicon: '/imgs/favicon.ico',
         config_js: '/conf/conf.prod.js'
       }
-    }),
-    new webpack.DefinePlugin({
-      __PRODUCTION: JSON.stringify(true)
-    }),
+    })
   ],
   resolve: {
     extensions: ['.js', '.jsx']
