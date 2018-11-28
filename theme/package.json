@@ -1,6 +1,6 @@
 {
   "name": "ko-theme",
-  "version": "2.4.9",
+  "version": "1.0.1",
   "description": "ko component theme.",
   "main": "lib/index.css",
   "style": "lib/index.css",

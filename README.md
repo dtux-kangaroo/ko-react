@@ -15,7 +15,7 @@
 ### Install
 
 ```bash
-npm install ko-ui --save
+npm install ko-react --save
 ```
 
 Before the building, you need a style theme, here we recommend you to pick up `ko-theme`.
@@ -28,7 +28,7 @@ npm install ko-theme --save
 We are die hard fans of ECMAScript 6, so we recommend you writing code in modern javascript.
 
 ```js
-import { Button } from 'ko-ui';
+import { Button } from 'ko-react ';
 ```
 
 ## Contributing
