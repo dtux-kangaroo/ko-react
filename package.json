@@ -9,24 +9,23 @@
     "build-theme": "gulp build --gulpfile theme/gulpfile.js",
     "start-site": "webpack-dev-server --progress --colors --config ./build/site-dev.js",
     "build-site": "rimraf dist && webpack --bail --progress --profile --config ./build/site-prod.js",
-    "publish": "./build/publish.sh",
-    "prepublish": "./build/publish.sh"
+    "com-build": "./build/com-build.sh"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ElemeFE/element-react.git"
+    "url": "git+https://github.com/dtux-kangaroo/ko.git"
   },
   "keywords": [
     "KO",
     "UI",
     "React"
   ],
-  "author": "ELEME Inc",
+  "author": "dtux",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/ElemeFE/element-react/issues"
+    "url": "https://github.com/dtux-kangaroo/ko/issues"
   },
-  "homepage": "https://github.com/ElemeFE/element-react",
+  "homepage": "https://github.comd/dtux-kangaroo/ko.git",
   "devDependencies": {
     "babel-cli": "^6.26.0",
     "babel-core": "^6.26.3",

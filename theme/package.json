@@ -1,7 +1,7 @@
 {
-  "name": "element-theme-chalk",
+  "name": "ko-theme",
   "version": "2.4.9",
-  "description": "Element component chalk theme.",
+  "description": "ko component theme.",
   "main": "lib/index.css",
   "style": "lib/index.css",
   "files": [
@@ -13,18 +13,18 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ElementUI/theme-chalk.git"
+    "url": "git+https://github.com/dtux-kangaroo/ko/theme.git"
   },
   "keywords": [
-    "element",
+    "ko",
     "theme"
   ],
-  "author": "yi.shyang@ele.me",
+  "author": "dtux",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/ElementUI/theme-chalk/issues"
+    "url": "https://github.com/dtux-kangaroo/ko/theme/issues"
   },
-  "homepage": "https://github.com/ElementUI/theme-chalk#readme",
+  "homepage": "https://github.com/dtux-kangaroo/ko/theme#readme",
   "devDependencies": {
     "autoprefixer": "^9.3.1",
     "cssnano": "^4.1.7",

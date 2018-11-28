@@ -1,33 +1,33 @@
-# element-theme-chalk
-> element component chalk theme.
+# ko-theme
+> dtux component ko theme.
 
 
 ## Installation
-```shell
-npm i element-theme-chalk -S
+```
+yarn add ko-theme  --save
 ```
 
 ## Usage
 
 Use Sass import
 ```css
-@import 'element-theme-chalk';
+@import 'ko-theme';
 ```
 
 Or Use webpack
 ```javascript
-import 'element-theme-chalk';
+import 'ko-theme';
 ```
 
 Or
 ```html
-<link rel="stylesheet" href="path/to/node_modules/element-theme-chalk/lib/index.css">
+<link rel="stylesheet" href="node_modules/ko-theme/lib/index.css">
 ```
 
 ##  Import on demand
 ```javascript
-import 'element-theme-chalk/lib/input.css';
-import 'element-theme-chalk/lib/select.css';
+import 'ko-theme/lib/input.css';
+import 'ko-theme/lib/select.css';
 
 // ...
 ```

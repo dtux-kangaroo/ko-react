@@ -1,5 +1,5 @@
 import React from 'react';
-import { Component, PropTypes } from '../utils';
+import { Component, PropTypes } from '../../utils';
 
 export default class Icon extends Component {
   render() {

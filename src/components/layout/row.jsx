@@ -1,7 +1,7 @@
 /* @flow */
 
 import React from 'react';
-import { Component, PropTypes } from '../utils';
+import { Component, PropTypes } from '../../utils';
 
 export default class Row extends Component {
   getChildContext(): { gutter: number | string } {

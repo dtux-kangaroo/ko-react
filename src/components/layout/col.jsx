@@ -1,7 +1,7 @@
 /* @flow */
 
 import React from 'react';
-import { Component, PropTypes } from '../utils';
+import { Component, PropTypes } from '../../utils';
 
 export default class Col extends Component {
   getStyle(): { paddingLeft: string, paddingRight: string } {
@@ -22,8 +22,8 @@ export default class Col extends Component {
       if (this.props[prop] >= 0) {
         classList.push(
           prop !== 'span'
-          ? `el-col-${prop}-${this.props[prop]}`
-          : `el-col-${this.props[prop]}`
+          ? `ko-col-${prop}-${this.props[prop]}`
+          : `ko-col-${this.props[prop]}`
         );
       }
     });
@@ -34,17 +34,17 @@ export default class Col extends Component {
         Object.keys(props).forEach(prop => {
           classList.push(
             prop !== 'span'
-            ? `el-col-${size}-${prop}-${props[prop]}`
-            : `el-col-${size}-${props[prop]}`
+            ? `ko-col-${size}-${prop}-${props[prop]}`
+            : `ko-col-${size}-${props[prop]}`
           );
         });
       } else if (this.props[size] >= 0) {
-        classList.push(`el-col-${size}-${Number(this.props[size])}`);
+        classList.push(`ko-col-${size}-${Number(this.props[size])}`);
       }
     });
 
     return React.createElement(this.props.tag, {
-      className: this.className('el-col', classList),
+      className: this.className('ko-col', classList),
       style: this.style(this.getStyle())
     }, this.props.children);
   }
