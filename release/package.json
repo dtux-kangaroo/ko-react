@@ -1,6 +1,6 @@
 {
-  "name": "ko-react",
-  "version": "1.0.0",
+  "name": "ko-rt",
+  "version": "1.0.1",
   "description": "KO UI for React",
   "private": false,
   "main": "lib/index.js",
