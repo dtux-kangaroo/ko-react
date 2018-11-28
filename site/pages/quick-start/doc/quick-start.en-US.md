@@ -7,10 +7,10 @@ Installing with npm is recommended and it works seamlessly with `webpack`.
 npm i ko-ui --save
 ```
 ### Theme
-Before the building, you need a style theme, here we recommend you to pick up `element-theme-default`.
+Before the building, you need a style theme, here we recommend you to pick up `ko-theme`.
 
 ```shell
-npm install element-theme-default --save
+npm install ko-theme --save
 ```
 
 ### Usage
@@ -20,7 +20,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Button } from 'ko-ui';
 
-import 'element-theme-default';
+import 'ko-theme';
 
 ReactDOM.render(<Button type="primary">Hello</Button>, document.getElementById('app'));
 
