@@ -1,5 +1,5 @@
 {
-  "name": "ko-ui",
+  "name": "ko-react",
   "version": "1.0.0",
   "description": "KO UI for React",
   "private": false,
@@ -20,12 +20,12 @@
     "UI",
     "React"
   ],
-  "author": "ELEME Inc",
+  "author": "dtux",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/dtux-kangaroo/ko/issues"
   },
-  "homepage": "https://github.com/dtux-kangaroo/ko",
+  "homepage": "https://github.comd/dtux-kangaroo/ko.git",
   "devDependencies": {
     "babel-cli": "^6.26.0",
     "babel-core": "^6.26.3",

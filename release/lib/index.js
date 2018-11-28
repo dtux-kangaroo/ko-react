@@ -4,7 +4,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _locale = require('./locale');
+var _locale = require('./components/locale');
 
 Object.defineProperty(exports, 'i18n', {
   enumerable: true,
@@ -13,7 +13,7 @@ Object.defineProperty(exports, 'i18n', {
   }
 });
 
-var _button = require('./button');
+var _button = require('./components/button');
 
 Object.defineProperty(exports, 'Button', {
   enumerable: true,
@@ -22,7 +22,7 @@ Object.defineProperty(exports, 'Button', {
   }
 });
 
-var _layout = require('./layout');
+var _layout = require('./components/layout');
 
 Object.defineProperty(exports, 'Layout', {
   enumerable: true,
@@ -31,7 +31,7 @@ Object.defineProperty(exports, 'Layout', {
   }
 });
 
-var _icon = require('./icon');
+var _icon = require('./components/icon');
 
 Object.defineProperty(exports, 'Icon', {
   enumerable: true,
