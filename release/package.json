@@ -1,15 +1,16 @@
 {
-  "name": "ko-rt",
-  "version": "1.0.1",
+  "name": "ko-react",
+  "version": "1.0.0",
   "description": "KO UI for React",
   "private": false,
   "main": "lib/index.js",
   "module": "es/index.js",
   "scripts": {
-    "build-theme": "gulp build --gulpfile theme/gulpfile.js",
-    "start-site": "webpack-dev-server --progress --colors --config ./build/site-dev.js",
-    "build-site": "rimraf dist && webpack --bail --progress --profile --config ./build/site-prod.js",
-    "com-build": "./build/com-build.sh"
+    "theme-build": "gulp build --gulpfile theme/gulpfile.js",
+    "com-build": "./build/com-build.sh",
+    "site-dev": "webpack-dev-server --progress --colors --config ./build/site-dev.js",
+    "site-prod": "rimraf dist && webpack --bail --progress --profile --config ./build/site-prod.js",
+    "site-push": "./build/site-push.sh"
   },
   "repository": {
     "type": "git",
@@ -57,6 +58,7 @@
     "react-hot-loader": "^3.1.3",
     "react-scroll-up": "^1.3.3",
     "regenerator-runtime": "^0.11.0",
+    "rimraf": "^2.6.2",
     "sass-loader": "^6.0.5",
     "strip-loader": "^0.1.2",
     "style-loader": "^0.19.0",

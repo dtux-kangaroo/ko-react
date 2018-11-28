@@ -4,7 +4,7 @@
 Installing with npm is recommended and it works seamlessly with `webpack`.
 
 ```shell
-npm i ko-ui --save
+npm i ko-rt --save
 ```
 ### Theme
 Before the building, you need a style theme, here we recommend you to pick up `ko-theme`.
@@ -18,7 +18,7 @@ npm install ko-theme --save
 ```js
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Button } from 'ko-ui';
+import { Button } from 'ko-rt';
 
 import 'ko-theme';
 

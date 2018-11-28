@@ -19,7 +19,7 @@ $--font-path: '~ko-theme/src/fonts';
 Then in the entry file of your project, import this style file instead of Element's built CSS:
 ```JS
 import React from 'React'
-import { Button} from 'ko-ui'
+import { Button} from 'ko-rt'
 
 import 'ko-theme';
 

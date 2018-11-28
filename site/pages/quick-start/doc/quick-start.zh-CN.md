@@ -4,7 +4,7 @@
 推荐使用 npm 的方式安装，它能更好地和`webpack`打包工具配合使用。
 
 ```shell
-npm i ko-ui --save
+npm i ko-rt --save
 ```
 
 ### 主题
@@ -19,7 +19,7 @@ npm install ko-theme --save
 ```js
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Button } from 'ko-ui';
+import { Button } from 'ko-rt';
 
 import 'ko-theme';
 

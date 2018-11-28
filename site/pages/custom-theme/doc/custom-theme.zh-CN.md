@@ -22,7 +22,7 @@ $--font-path: '~ko-theme/src/fonts';
 之后，在项目的入口文件中，直接引入以上样式文件即可（无需引入 ko 编译好的 CSS 文件）：
 ```JS
 import React from 'React'
-import { Button } from 'ko-ui'
+import { Button } from 'ko-rt'
 
 import 'ko-theme';
 

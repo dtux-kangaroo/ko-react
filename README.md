@@ -15,7 +15,7 @@
 ### Install
 
 ```bash
-npm install ko-react --save
+npm install ko-rt --save
 ```
 
 Before the building, you need a style theme, here we recommend you to pick up `ko-theme`.
