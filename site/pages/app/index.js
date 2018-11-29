@@ -106,13 +106,13 @@ export default class App extends React.Component {
             </h1>
             <ul className="nav">
               <li className="nav-item">
-                <a href={`121.io/#/${this.state.locale}/guide/design`} target="_blank" rel="noopener noreferrer">{this.getLocale('misc.guide')}</a>
+                <a href={`//dtux-kangaroo.github.io/ko-react/#/zh-CN/quick-start`} target="_blank" rel="noopener noreferrer">Github</a>
               </li>
               <li className="nav-item">
                 <a className="active">{this.getLocale('misc.component')}</a>
               </li>
               <li className="nav-item">
-                <a href={`/#/${this.state.locale}/resource`} target="_blank" rel="noopener noreferrer">{this.getLocale('misc.resource')}</a>
+                <a href={`https://github.com/dtux-kangaroo/resource`} target="_blank" rel="noopener noreferrer">{this.getLocale('misc.resource')}</a>
               </li>
               <li className="nav-item">
                 <span className={classnames('nav-lang', { active: this.state.locale === 'zh-CN'})} onClick={this.setLocale.bind(this, 'zh-CN')}>中文</span>
@@ -166,7 +166,7 @@ export default class App extends React.Component {
           </nav>
           <div className="content">
              { this.getComponent(this.state.page) }
-            <ScrollToTop showUnder={210}>
+            <ScrollToTop showUnder={360}>
               <div className="page-component-up">
                 <i className="el-icon-caret-top"></i>
               </div>
@@ -178,11 +178,6 @@ export default class App extends React.Component {
             <div className="footer-main">
               <p className="footer-main-title">ko</p>
                <a className="footer-main-link" target="_blank" href="https://www.dtstack.com/">袋鼠云--提供技术支持--dtux</a>
-            </div>
-            <div className="footer-social">
-              <a href="//github.com/dtux/ko" target="_blank" rel="noopener noreferrer">
-                <img src={require('../../assets/imgs/github.png')} />
-              </a>
             </div>
           </div>
         </footer>
