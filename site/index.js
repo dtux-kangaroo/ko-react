@@ -3,7 +3,6 @@ import { render } from 'react-dom';
 import { AppContainer } from 'react-hot-loader';
 
 import 'core-js';
-//import 'element-theme-default';
 import '../theme/src/index.scss'
 import './assets/styles/base.scss'
 import './assets/styles/prism.css'
