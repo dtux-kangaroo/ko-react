@@ -37,11 +37,9 @@ export default class Markdown extends React.Component {
   }
 
   render() {
-    const document = this.document(localStorage.getItem('ELEMENT_LANGUAGE') || 'zh-CN');
-
+    const document = this.document(localStorage.getItem('KO_LANGUAGE') || 'zh-CN');
     if (typeof document === 'string') {
       this.components.clear();
-
       const html = marked(document.replace(/:::\s?demo\s?([^]+?):::/g, (match, p1, offset) => {
         const id = offset.toString(36);
         this.components.set(id, React.createElement(Canvas, Object.assign({
