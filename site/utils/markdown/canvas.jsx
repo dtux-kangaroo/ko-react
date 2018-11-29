@@ -35,7 +35,6 @@ export default class Canvas extends React.Component {
     import('../../../src').then(Element => {
       const args = ['context', 'React', 'ReactDOM']
       const argv = [this, React, ReactDOM]
-  console.log(Element,'element');
       for (const key in Element) {
         args.push(key)
         argv.push(Element[key])
@@ -45,7 +44,6 @@ export default class Canvas extends React.Component {
         argv
       }
     }).then(({ args, argv }) => {
-      console.log(args,argv,'params',value);
       const code = transform(`
         class Demo extends React.Component {
           ${value}
@@ -57,7 +55,6 @@ export default class Canvas extends React.Component {
       }).code
 
       args.push(code)
-      console.log(args,argv,'pplll',value);
       new Function(...args).apply(null, argv)
       this.source[2] = value
     }).catch((err) => {
@@ -68,8 +65,10 @@ export default class Canvas extends React.Component {
   }
 
   render() {
+    let name='quick-start';
+    location.href.replace(/\/\w+-?\w+/g,function($1){name=$1.substring(1)});
     return (
-      <div className={`demo-block demo-box demo-${this.props.name}`}>
+      <div className={`demo-block demo-box demo-${name}`}>
         <div className="source" id={this.playerId} />
         {
           this.state.showBlock && (
