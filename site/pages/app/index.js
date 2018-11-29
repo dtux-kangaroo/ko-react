@@ -4,8 +4,8 @@ import classnames from 'classnames';
 
 import { i18n } from '../../../src';
 
-import en from '../../../src/components/locale/lang/en';
-import zh from '../../../src/components/locale/lang/zh-CN';
+import en from '../../../src/locales/lang/en';
+import zh from '../../../src/locales/lang/zh-CN';
 
 import locales from '../../locales';
 import pages from '../index';

@@ -23,6 +23,6 @@ import { Button } from 'ko-rt';
 
 import 'ko-theme';
 
-ReactDOM.render(<Button type="primary">Hello</Button>, document.getElementById('app'));
+ReactDOM.render(<Button type="primary">Hello word</Button>, document.getElementById('app'));
 
 ```

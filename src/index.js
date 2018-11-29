@@ -1,4 +1,4 @@
-export { default as i18n } from './components/locale';
+export { default as i18n } from './locales';
 
 export { default as Button } from './components/button';
 export { default as Layout } from './components/layout';
