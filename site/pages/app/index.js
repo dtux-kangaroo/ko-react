@@ -28,7 +28,7 @@ export default class App extends React.Component {
   componentDidMount() {
     this.setPage(() => {
       if (!this.state.locale) {
-        this.setLocale(localStorage.getItem('ELEMENT_LANGUAGE') || 'zh-CN');
+        this.setLocale(localStorage.getItem('KO_LANGUAGE') || 'zh-CN');
       }
     });
   }
@@ -67,7 +67,7 @@ export default class App extends React.Component {
     if (routes) {
       if (locales.hasOwnProperty(routes[1])) {
         this.setState({ locale: routes[1] }, () => {
-          localStorage.setItem('ELEMENT_LANGUAGE', this.state.locale);
+          localStorage.setItem('KO_LANGUAGE', this.state.locale);
         });
       }
       return routes[2];
@@ -106,7 +106,7 @@ export default class App extends React.Component {
             </h1>
             <ul className="nav">
               <li className="nav-item">
-                <a href={`//dtux-kangaroo.github.io/ko-react/#/zh-CN/quick-start`} target="_blank" rel="noopener noreferrer">Github</a>
+                <a href={`https://github.com/dtux-kangaroo/ko-react.git`} target="_blank" rel="noopener noreferrer">Github</a>
               </li>
               <li className="nav-item">
                 <a className="active">{this.getLocale('misc.component')}</a>

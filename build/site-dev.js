@@ -15,7 +15,7 @@ module.exports = {
   },
   output: {
     path: buildPath,
-    publicPath: "/",
+    publicPath: "/ko-react",
     chunkFilename: "js/[name].[hash].js",
     filename: "js/[name].[hash].js",
   },

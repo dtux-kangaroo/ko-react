@@ -9,12 +9,13 @@
     "theme-build": "gulp build --gulpfile theme/gulpfile.js",
     "com-build": "./build/com-build.sh",
     "site-dev": "webpack-dev-server --progress --colors --config ./build/site-dev.js",
-    "site-prod": "rimraf dist && webpack --bail --progress --profile --config ./build/site-prod.js",
-    "site-push": "./build/site-push.sh"
+    "site-prod": "webpack --bail --progress --profile --config ./build/site-prod.js",
+    "site-push": "./build/site-push.sh",
+    "preview": "pushstate-server ./dist 1234"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/dtux-kangaroo/ko.git"
+    "url": "git+https://github.com/dtux-kangaroo/ko-react.git"
   },
   "keywords": [
     "KO",
@@ -24,9 +25,9 @@
   "author": "dtux",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/dtux-kangaroo/ko/issues"
+    "url": "https://github.com/dtux-kangaroo/ko-react/issues"
   },
-  "homepage": "https://github.comd/dtux-kangaroo/ko.git",
+  "homepage": "https://github.comd/dtux-kangaroo/ko-react.git",
   "devDependencies": {
     "babel-cli": "^6.26.0",
     "babel-core": "^6.26.3",
@@ -52,6 +53,7 @@
     "node-sass": "^4.9.3",
     "optimize-css-assets-webpack-plugin": "^5.0.1",
     "prismjs": "^1.15.0",
+    "pushstate-server": "^3.0.1",
     "raw-loader": "^0.5.1",
     "react": "*",
     "react-dom": "*",
