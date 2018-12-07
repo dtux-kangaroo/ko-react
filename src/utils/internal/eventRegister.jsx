@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import { Component } from 'react';
-import { require_condition } from '../utils';
+import { require_condition } from '../tool';
 
 let windowKey = Symbol.for("er_register_map")
 const registerMap = window[windowKey] = window[windowKey] || {

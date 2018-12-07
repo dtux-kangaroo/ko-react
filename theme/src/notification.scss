@@ -64,24 +64,24 @@
     }
   }
 
-  .el-icon-success {
+  .ko-icon-success {
     color: $--notification-success-color;
   }
 
-  .el-icon-error {
+  .ko-icon-error {
     color: $--notification-danger-color;
   }
 
-  .el-icon-info {
+  .ko-icon-info {
     color: $--notification-info-color;
   }
 
-  .el-icon-warning {
+  .ko-icon-warning {
     color: $--notification-warning-color;
   }
 }
 
-.el-notification-fade-enter {
+.ko-notification-fade-enter {
   &.right {
     right: 0;
     transform: translateX(100%);
@@ -93,6 +93,6 @@
   }
 }
 
-.el-notification-fade-leave-active {
+.ko-notification-fade-leave-active {
   opacity: 0;
 }

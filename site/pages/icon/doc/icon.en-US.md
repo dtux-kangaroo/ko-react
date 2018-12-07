@@ -4,7 +4,7 @@ Element provides a set of common icons.
 
 ### Basic usage
 
-Just assign the class name to `el-icon-iconName`.
+Just assign the class name to `ko-icon-iconName`.
 
 :::demo
 
@@ -12,9 +12,9 @@ Just assign the class name to `el-icon-iconName`.
 render() {
   return (
     <div>
-      <i className="el-icon-edit"></i>
-      <i className="el-icon-share"></i>
-      <i className="el-icon-delete"></i>
+      <i className="ko-icon-edit"></i>
+      <i className="ko-icon-share"></i>
+      <i className="ko-icon-delete"></i>
       <Button type="primary" icon="search">Search</Button>
     </div>
   )
