@@ -6,7 +6,7 @@
   "main": "lib/index.js",
   "module": "es/index.js",
   "scripts": {
-    "start":"npm run site-dev",
+    "start": "npm run site-dev",
     "theme-build": "gulp build --gulpfile theme/gulpfile.js",
     "com-build": "./build/com-build.sh",
     "site-dev": "webpack-dev-server --progress --colors --config ./build/site-dev.js",
@@ -46,6 +46,7 @@
     "enzyme": "^3.2.0",
     "enzyme-adapter-react-16": "^1.1.0",
     "file-loader": "^1.1.5",
+    "gulp": "^4.0.0",
     "html-webpack-plugin": "^3.2.0",
     "marked": "^0.5.1",
     "mini-css-extract-plugin": "^0.4.5",
