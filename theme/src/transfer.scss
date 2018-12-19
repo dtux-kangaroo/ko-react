@@ -82,12 +82,12 @@
     margin: 0;
     padding: 6px 0;
     list-style: none;
-    height: $--transfer-panko-body-height;
+    height: $--transfer-panel-body-height;
     overflow: auto;
     box-sizing: border-box;
 
     @include when(filterable) {
-      height: #{$--transfer-panko-body-height - $--transfer-filter-height - 20px};
+      height: #{$--transfer-panel-body-height - $--transfer-filter-height - 20px};
       padding-top: 0;
     }
   }
@@ -153,9 +153,9 @@
   }
 
   .ko-transfer-panel__header {
-    height: $--transfer-panko-header-height;
-    line-height: $--transfer-panko-header-height;
-    background: $--transfer-panko-header-background;
+    height: $--transfer-panel-header-height;
+    line-height: $--transfer-panel-header-height;
+    background: $--transfer-panel-header-background;
     margin: 0;
     padding-left: 15px;
     border-bottom: 1px solid $--transfer-border-color;
@@ -183,7 +183,7 @@
   }
 
   .ko-transfer-panel__footer {
-    height: $--transfer-panko-footer-height;
+    height: $--transfer-panel-footer-height;
     background: $--color-white;
     margin: 0;
     padding: 0;
