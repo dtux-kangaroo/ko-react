@@ -10,7 +10,20 @@ export default {
       'color': require('./color'),
       'typography': require('./typography'),
       'icon': require('./icon'),
-      'button': require('./button')
+      'button': require('./button'),
+    },
+    'Form Controls': {
+      'checkbox': require('./checkbox'),
+      'radio':require('./radio'),
+      'select':require('./select'),
+      'input':require('./input'),
+      'input-number':require('./inputNumber'),
+    },
+    "Views": {
+      'card': require('./card'),
+    },
+    "Navigation": {
+      'tabs': require('./tabs'),
     }
   }
 }
