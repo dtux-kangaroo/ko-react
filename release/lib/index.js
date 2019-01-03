@@ -4,12 +4,12 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _locale = require('./components/locale');
+var _locales = require('./locales');
 
 Object.defineProperty(exports, 'i18n', {
   enumerable: true,
   get: function get() {
-    return _interopRequireDefault(_locale).default;
+    return _interopRequireDefault(_locales).default;
   }
 });
 
