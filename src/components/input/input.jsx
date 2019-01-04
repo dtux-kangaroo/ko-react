@@ -110,12 +110,12 @@ export default class Input extends Component {
     } = this.props;
 
     const classname = this.classNames(
-      type === 'textarea' ? 'el-textarea' : 'el-input',
-      size && `el-input--${size}`, {
+      type === 'textarea' ? 'ko-textarea' : 'ko-input',
+      size && `ko-input--${size}`, {
         'is-disabled': this.props.disabled,
-        'el-input-group': prepend || append,
-        'el-input-group--append': !!append,
-        'el-input-group--prepend': !!prepend
+        'ko-input-group': prepend || append,
+        'ko-input-group--append': !!append,
+        'ko-input-group--prepend': !!prepend
       }
     );
 
@@ -135,7 +135,7 @@ export default class Input extends Component {
         <div style={this.style()} className={this.className(classname)}>
           <textarea { ...otherProps }
             ref="textarea"
-            className="el-textarea__inner"
+            className="ko-textarea__inner"
             style={this.state.textareaStyle}
             rows={rows}
             onChange={this.handleChange.bind(this)}
@@ -147,19 +147,19 @@ export default class Input extends Component {
     } else {
       return (
         <div style={this.style()} className={this.className(classname)} onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave}>
-          { prepend && <div className="el-input-group__prepend">{prepend}</div> }
-          { typeof icon === 'string' ? <i className={`el-input__icon el-icon-${icon}`} onClick={this.handleIconClick.bind(this)}>{prepend}</i> : icon }
+          { prepend && <div className="ko-input-group__prepend">{prepend}</div> }
+          { typeof icon === 'string' ? <i className={`ko-select__caret ko-icon-${icon}`} onClick={this.handleIconClick.bind(this)}>{prepend}</i> : icon }
           <input { ...otherProps }
             ref="input"
             type={type}
-            className="el-input__inner"
+            className="ko-input__inner"
             autoComplete={autoComplete}
             onChange={this.handleChange.bind(this)}
             onFocus={this.handleFocus.bind(this)}
             onBlur={this.handleBlur.bind(this)}
           />
-          { validating && <i className="el-input__icon el-icon-loading"></i> }
-          { append && <div className="el-input-group__append">{append}</div> }
+          { validating && <i className="ko-select__caret ko-icon-loading"></i> }
+          { append && <div className="ko-input-group__append">{append}</div> }
         </div>
       )
     }
