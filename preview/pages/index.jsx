@@ -11,6 +11,12 @@ export default {
       'typography': require('./typography'),
       'icon': require('./icon'),
       'button': require('./button')
+     },
+     'DataEntry':{
+       'select':require('./select')
+     },
+    'Feedback':{
+      'alert':require('./alert')
     }
   }
 }
