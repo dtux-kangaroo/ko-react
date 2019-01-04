@@ -1,5 +1,6 @@
 import React from 'react';
 import classNames from 'classnames';
+import { Component, PropTypes } from '../../utils';
 
 export default function Group(props) {
   const className = classNames({
@@ -16,5 +17,5 @@ export default function Group(props) {
 }
 
 Group.propTypes = {
-  children: React.PropTypes.any,
+  children: PropTypes.any,
 };

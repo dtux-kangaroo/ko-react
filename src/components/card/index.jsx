@@ -24,8 +24,8 @@ export default props => {
   }
 
   const head = title ? (
-    <div className={`${prefixCls}-head`}>
-      <h3 className={`${prefixCls}-head-title`}>{title}</h3>
+    <div className={`${prefixCls}__header`}>
+      <div className={`${prefixCls}-head-title`}>{title}</div>
     </div>
   ) : null;
 
@@ -33,7 +33,7 @@ export default props => {
     <div {...other} className={classString}>
       {head}
       {extra ? <div className={`${prefixCls}-extra`}>{extra}</div> : null}
-      <div className={`${prefixCls}-body`} style={bodyStyle}>{children}</div>
+      <div className={`${prefixCls}__body`} style={bodyStyle}>{children}</div>
     </div>
   );
 };

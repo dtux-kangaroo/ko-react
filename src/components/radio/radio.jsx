@@ -1,4 +1,4 @@
-import RcRadio from 'rc-radio';
+import RcCheckbox from 'rc-checkbox';
 import React,{PureComponent} from 'react';
 import classNames from 'classnames';
 
@@ -21,7 +21,7 @@ export default class Radio extends PureComponent {
     });
     return (
       <label className={wrapperClassString} style={style}>
-        <RcRadio {...this.props} className={classString} style={null} children={null} />
+        <RcCheckbox {...this.props} className={classString} style={null} children={null} />
         {children ? <span>{children}</span> : null}
       </label>
     );

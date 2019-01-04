@@ -6,12 +6,12 @@
   "main": "lib/index.js",
   "module": "es/index.js",
   "scripts": {
-    "start": "npm run site-dev",
-    "theme-build": "gulp build --gulpfile theme/gulpfile.js",
-    "com-build": "./build/com-build.sh",
-    "site-dev": "webpack-dev-server --progress --colors --config ./build/site-dev.js",
-    "site-prod": "webpack --bail --progress --profile --config ./build/site-prod.js",
-    "site-push": "./build/site-push.sh",
+    "start": "npm run dev:server",
+    "theme:build": "gulp build --gulpfile theme/gulpfile.js",
+    "com:build": "./build/com-build.sh",
+    "dev:server": "webpack-dev-server --progress --colors --config ./build/dev-server.js",
+    "prod:build": "webpack --bail --progress --profile --config ./build/prod-build.js",
+    "push:pages": "./build/push-pages.sh",
     "preview": "pushstate-server ./dist 1234"
   },
   "repository": {
@@ -81,7 +81,8 @@
     "react": "*",
     "react-click-outside": "^3.0.0",
     "react-dom": "*",
-    "throttle-debounce": "^1.0.1"
+    "throttle-debounce": "^1.0.1",
+    "url-parse": "^1.4.4"
   },
   "peerDependencies": {
     "react": "*",

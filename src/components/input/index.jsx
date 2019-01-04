@@ -1,4 +1,4 @@
-import Input from './Input';
+import Input from './input';
 import Group from './Group';
 
 Input.Group = Group;

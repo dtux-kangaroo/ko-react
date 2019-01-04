@@ -26,7 +26,7 @@ var _propTypes2 = _interopRequireDefault(_propTypes);
 
 var _react = require('react');
 
-var _utils = require('../utils');
+var _tool = require('../tool');
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -91,8 +91,8 @@ var EventRegister = function (_Component) {
       eventName = /^on/.test(eventName) ? eventName.substring(2) : eventName;
       this.cached = Object.assign({}, this.props, { eventName: eventName });
 
-      (0, _utils.require_condition)(typeof id === 'string', 'id prop is required');
-      (0, _utils.require_condition)(!hasRegistered(this.cached), 'id: ' + id + ' has been registered');
+      (0, _tool.require_condition)(typeof id === 'string', 'id prop is required');
+      (0, _tool.require_condition)(!hasRegistered(this.cached), 'id: ' + id + ' has been registered');
 
       doRegister(this.cached);
     }

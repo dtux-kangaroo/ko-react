@@ -3,7 +3,7 @@ import _possibleConstructorReturn from 'babel-runtime/helpers/possibleConstructo
 import _inherits from 'babel-runtime/helpers/inherits';
 import PropTypes from 'prop-types';
 import { Component } from 'react';
-import { require_condition } from '../utils';
+import { require_condition } from '../tool';
 
 var windowKey = Symbol.for("er_register_map");
 var registerMap = window[windowKey] = window[windowKey] || {

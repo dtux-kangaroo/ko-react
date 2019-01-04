@@ -1,5 +1,7 @@
 import React ,{PureComponent} from 'react';
 import Checkbox from './checkbox';
+import { PropTypes } from '../../utils';
+
 
 export default class CheckboxGroup extends PureComponent {
   static defaultProps = {
@@ -8,10 +10,10 @@ export default class CheckboxGroup extends PureComponent {
     onChange() {},
   }
   static propTypes = {
-    defaultValue: React.PropTypes.array,
-    value: React.PropTypes.array,
-    options: React.PropTypes.array.isRequired,
-    onChange: React.PropTypes.func,
+    defaultValue: PropTypes.array,
+    value: PropTypes.array,
+    options: PropTypes.array.isRequired,
+    onChange: PropTypes.func,
   }
   constructor(props) {
     super(props);
