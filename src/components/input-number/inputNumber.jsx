@@ -142,7 +142,7 @@ export default class InputNumber extends Component {
     const { value, inputActive } = this.state;
 
     return (
-      <div style={this.style()} className={this.className('ko-input-number', size && `el-input-number--${size}`, {
+      <div style={this.style()} className={this.className('ko-input-number', size && `ko-input-number--${size}`, {
         'is-disabled': disabled,
         'is-without-controls': !controls
       })}>
