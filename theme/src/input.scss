@@ -308,3 +308,22 @@
   width: 0;
   height: 0;
 }
+
+
+.ko-input__icon {
+  color: $--select-input-color;
+  font-size: $--select-input-font-size;
+  transition: transform .3s;
+  transform: translateY(-50%) rotateZ(180deg);
+  cursor: pointer;
+  position: absolute;
+  width: 35px;
+  line-height: 16px;
+  top: 50%;
+  right:0px;
+  text-align: center;
+
+  @include when(reverse) {
+    transform: translateY(-50%);
+  }
+}
