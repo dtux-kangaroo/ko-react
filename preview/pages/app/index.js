@@ -131,12 +131,6 @@ export default class App extends React.Component {
             <ul className="nav-right">
                 <li className="nav-item"> <a href="https://github.com/dtux-react" target="_blank">github</a></li>
                 <li className="nav-item"> <a href="https://zhuanlan.zhihu.com/c_109929958" target="_blank">社区</a></li>
-                <li className="nav-item">
-                  <select>
-                    <option>1</option>
-                    <option>2</option>
-                  </select>
-                </li>
               </ul>
           </div>
         </header>:null}
