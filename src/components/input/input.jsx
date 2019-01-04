@@ -111,12 +111,12 @@ export default class Input extends Component {
     } = this.props;
 
     const classname = this.classNames(
-      type === 'textarea' ? 'ko-textarea' : 'ko-input',
-      size && `ko-input--${size}`, {
+      type === 'textarea' ? 'el-textarea' : 'el-input',
+      size && `el-input--${size}`, {
         'is-disabled': this.props.disabled,
-        'ko-input-group': prepend || append,
-        'ko-input-group--append': !!append,
-        'ko-input-group--prepend': !!prepend
+        'el-input-group': prepend || append,
+        'el-input-group--append': !!append,
+        'el-input-group--prepend': !!prepend
       }
     );
 
@@ -136,7 +136,7 @@ export default class Input extends Component {
         <div style={this.style()} className={this.className(classname)}>
           <textarea { ...otherProps }
             ref="textarea"
-            className="el-textarea__inner"
+            className="ko-textarea__inner"
             style={this.state.textareaStyle}
             rows={rows}
             onChange={this.handleChange.bind(this)}
