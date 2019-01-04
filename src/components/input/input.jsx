@@ -1,7 +1,7 @@
 /* @flow */
 
 import React from 'react';
-import { Component, PropTypes }  from '../../utils';;
+import { Component, PropTypes } from '../../utils';
 
 import calcTextareaHeight from './calcTextareaHeight'
 
@@ -136,7 +136,7 @@ export default class Input extends Component {
         <div style={this.style()} className={this.className(classname)}>
           <textarea { ...otherProps }
             ref="textarea"
-            className="ko-textarea__inner"
+            className="el-textarea__inner"
             style={this.state.textareaStyle}
             rows={rows}
             onChange={this.handleChange.bind(this)}

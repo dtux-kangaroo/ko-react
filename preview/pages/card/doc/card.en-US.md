@@ -1,75 +1,95 @@
-category: Components
-type: Views
-title: Card
+## Card
+Integrate information in a card container.
 
-A basic card containing a title, content and an extra corner content.
+### Basic usage
 
-:::demo 
+Card includes title, content and operations.
+
+:::demo Card is made up of `header` and `body`. `header` is optional, and its content distribution depends on a named slot.
 ```js
-render(){
-    return (
-         <Card
-                title="Card title"
-                extra={<a href="#">More</a>}
-                style={{ width: 300 }}
-            >
-                <p>Card content</p>
-                <p>Card content</p>
-                <p>Card content</p>
-        </Card>
-    )
+render() {
+  return (
+    <Card
+      className="box-card"
+      header={
+        <div className="clearfix">
+          <span style={{ "lineHeight": "36px" }}>Card Name</span>
+          <span style={{ "float": "right" }}>
+            <Button type="primary">Operation Button</Button>
+          </span>
+        </div>
+      }
+    >
+      <div className="text item">List item 1</div>
+      <div className="text item">List item 2</div>
+      <div className="text item">List item 3</div>
+      <div className="text item">List item 4</div>
+    </Card>
+  )
 }
 ```
 :::
 
-A simple card only containing a content area.
+### Simple card
 
-:::demo 
+The header part can be omitted.
+
+:::demo
 ```js
-render(){
-    return (
-         <Card style={{ width: 300 }}>
-            <p>Card content</p>
-            <p>Card content</p>
-            <p>Card content</p>
-        </Card>
-    )
+render() {
+  return (
+    <Card className="box-card">
+      <div className="text item">List item 1</div>
+      <div className="text item">List item 2</div>
+      <div className="text item">List item 3</div>
+      <div className="text item">List item 4</div>
+    </Card>
+  )
 }
 ```
 :::
 
-A borderless card on a gray background.
+### With images
 
-:::demo 
+Display richer content by adding some configs.
+
+:::demo The `body-style` attribute defines CSS style of custom `body`. This example also uses `el-col` for layout.
 ```js
-render(){
-    return (
-   <div style={{ background: '#ECECEC', padding: '30px' }}>
-        <Card title="Card title" bordered={false} style={{ width: 300 }}>
-        <p>Card content</p>
-        <p>Card content</p>
-        <p>Card content</p>
+render() {
+  return (
+    <Layout.Row>
+      <Layout.Col span={ 8 } offset={ 0 }>
+        <Card bodyStyle={{ padding: 0 }}>
+          <img src={this.props.imgSrc} className="image" />
+          <div style={{ padding: 14 }}>
+            <span>Yummy hamburger</span>
+            <div className="bottom clearfix">
+              <time className="time">2016-10-21 16:19</time>
+              <Button type="text" className="button">Operating button</Button>
+            </div>
+          </div>
         </Card>
-    </div>
-    )
+      </Layout.Col>
+      <Layout.Col span={ 8 } offset={ 2 }>
+        <Card bodyStyle={{ padding: 0 }}>
+          <img src={this.props.imgSrc} className="image" />
+          <div style={{ padding: 14 }}>
+            <span>Yummy hamburger</span>
+            <div className="bottom clearfix">
+              <time className="time">2016-10-21 16:19</time>
+              <Button type="text" className="button">Operating button</Button>
+            </div>
+          </div>
+        </Card>
+      </Layout.Col>
+    </Layout.Row>
+  )
 }
 ```
 :::
-Common card container.
 
-## When to use
-
-The most basic card container. You can use it to contain text, lists, pictures and paragraphs.
-
-## API
-
-```html
-<Card title="Card title">Card content</Card>
-```
-
-| Property     | Description           | Type     | Default       |
-|----------|----------------|----------|--------------|
-| title    | Card title | React.Element   |  -  |
-| extra    | Corner content of card | React.Element   | - |
-| bordered | Whether a border is set | Boolean   |  true  |
-| bodyStyle | Custom style for content area | Object   |  -  |
+### Attributes
+| Attribute      | Description          | Type      | Accepted Values       | Default  |
+|---------- |-------- |---------- |-------------  |-------- |
+| header | Title of the card. Also accepts a DOM passed by `slot#header` | string| — | — |
+| bodyStyle | CSS style of body | object| — | { padding: '20px' } |

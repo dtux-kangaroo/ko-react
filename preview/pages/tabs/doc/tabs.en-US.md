@@ -1,47 +1,239 @@
----
-category: Components
-type: Data Display
-title: Tabs
-cols: 1
----
+## Tabs
 
-Tabs make it easy to switch between different views.
+Divide data collections which are related yet belong to different types.
 
-### When To Use
+### Basic usage
 
-Ant Design has 3 types of Tabs for different situations.
+Basic and concise tabs.
 
-    - Card Tabs: for managing too many closeable views.
-    - Normal Tabs: for functional aspects of a page.
-    - [RadioButton](/components/radio/#components-radio-demo-radiobutton): for secondary tabs.
+:::demo Tabs provide a selective card functionality. By default the first tab is selected as active, and you can activate any tab by setting the `value` attribute.
 
-## API
+```js
+render() {
+  return (
+    <Tabs activeName="2" onTabClick={ (tab) => console.log(tab.props.name) }>
+      <Tabs.Pane label="User" name="1">User</Tabs.Pane>
+      <Tabs.Pane label="Config" name="2">Config</Tabs.Pane>
+      <Tabs.Pane label="Role" name="3">Role</Tabs.Pane>
+      <Tabs.Pane label="Task" name="4">Task</Tabs.Pane>
+    </Tabs>
+  )
+}
+```
+:::
 
-### Tabs
+### Card Style
 
-| Property | Description | Type | Default |
-| -------- | ----------- | ---- | ------- |
-| activeKey | Current TabPane's key | string | - |
-| animated | Whether to change tabs with animation. Only works while `tabPosition="top"\|"bottom"` | boolean \| {inkBar:boolean, tabPane:boolean} | `true`, `false` when `type="card"` |
-| renderTabBar | replace the TabBar | (props: DefaultTabBarProps, DefaultTabBar: React.ReactNode) => React.ReactNode | - |
-| defaultActiveKey | Initial active TabPane's key, if `activeKey` is not set. | string | - |
-| hideAdd | Hide plus icon or not. Only works while `type="editable-card"` | boolean | `false` |
-| size | preset tab bar size | `large` \| `default` \| `small` | `default` |
-| tabBarExtraContent | Extra content in tab bar | React.ReactNode | - |
-| tabBarGutter | The gap between tabs | number | - |
-| tabBarStyle | Tab bar style object | object | - |
-| tabPosition | Position of tabs | `top` \| `right` \| `bottom` \| `left` | `top` |
-| type | Basic style of tabs | `line` \| `card` \| `editable-card` | `line` |
-| onChange | Callback executed when active tab is changed | Function(activeKey) {} | - |
-| onEdit | Callback executed when tab is added or removed. Only works while `type="editable-card"` | (targetKey, action): void | - |
-| onNextClick | Callback executed when next button is clicked | Function | - |
-| onPrevClick | Callback executed when prev button is clicked | Function | - |
-| onTabClick | Callback executed when tab is clicked | Function | - |
+Tabs styled as cards.
 
-### Tabs.TabPane
+:::demo Set `type` to `card` can get a card-styled tab.
 
-| Property | Description | Type | Default |
-| -------- | ----------- | ---- | ------- |
-| forceRender | Forced render of content in tabs, not lazy render after clicking on tabs | boolean | false |
-| key | TabPane's key | string | - |
-| tab | Show text in TabPane's head | string\|ReactNode | - |
+```js
+render() {
+  return (
+    <Tabs type="card" value="1">
+      <Tabs.Pane label="User" name="1">User</Tabs.Pane>
+      <Tabs.Pane label="Config" name="2">Config</Tabs.Pane>
+      <Tabs.Pane label="Role" name="3">Role</Tabs.Pane>
+      <Tabs.Pane label="Task" name="4">Task</Tabs.Pane>
+    </Tabs>
+  )
+}
+```
+:::
+
+### Border card
+
+Border card tabs.
+
+:::demo Set `type` to `borderCard`.
+
+```js
+render() {
+  return (
+    <Tabs type="border-card" activeName="1">
+      <Tabs.Pane label="User" name="1">User</Tabs.Pane>
+      <Tabs.Pane label="Config" name="2">Config</Tabs.Pane>
+      <Tabs.Pane label="Role" name="3">Role</Tabs.Pane>
+      <Tabs.Pane label="Task" name="4">Task</Tabs.Pane>
+    </Tabs>
+  )
+}
+```
+:::
+
+### Custom Tab
+
+You can use `label` to customize the tab label content.
+
+:::demo
+
+```js
+render() {
+  const label = <span><Icon name="date" />User</span>
+
+  return (
+    <Tabs type="border-card" activeName="1">
+      <Tabs.Pane label={label} name="1">User</Tabs.Pane>
+      <Tabs.Pane label="Config" name="2">Config</Tabs.Pane>
+      <Tabs.Pane label="Role" name="3">Role</Tabs.Pane>
+      <Tabs.Pane label="Task" name="4">Task</Tabs.Pane>
+    </Tabs>
+  )
+}
+```
+:::
+
+### Add & close tab
+
+Only card type Tabs support addable & closeable.
+
+:::demo
+
+```js
+constructor() {
+  super();
+  this.state = {
+    tabs: [{
+      title: 'Tab 1',
+      name: 'Tab 1',
+      content: 'Tab 1 content',
+    }, {
+      title: 'Tab 2',
+      name: 'Tab 2',
+      content: 'Tab 2 content',
+    }],
+    tabIndex: 2,
+  }
+}
+
+editTab(action, tab) {
+  if (action === 'add') {
+    const { tabs, tabIndex } = this.state;
+    const index = tabIndex + 1;
+
+    tabs.push({
+      title: 'new Tab',
+      name: 'Tab ' + index,
+      content: 'new Tab content',
+    });
+    this.setState({
+      tabs,
+      tabIndex: index,
+    });
+  }
+
+  if (action === 'remove') {
+    const { tabs } = this.state;
+
+    console.log(action, tab);
+    tabs.splice(tab.key.replace(/^\.\$/, ''), 1);
+    this.setState({
+      tabs,
+    });
+  }
+}
+
+render() {
+  return (
+    <Tabs type="card" value="Tab 2" editable onTabEdit={(action, tab) => this.editTab(action, tab)}>
+      {
+        this.state.tabs.map((item, index) => {
+          return <Tabs.Pane key={index} closable label={item.title} name={item.name}>{item.content}</Tabs.Pane>
+        })
+      }
+    </Tabs>
+  )
+}
+```
+:::
+
+### Customized trigger button of new tab
+
+:::demo
+
+```js
+constructor() {
+  super();
+  this.state = {
+    tabs: [{
+      title: 'Tab 1',
+      name: 'Tab 1',
+      content: 'Tab 1 content',
+    }, {
+      title: 'Tab 2',
+      name: 'Tab 2',
+      content: 'Tab 2 content',
+    }],
+    tabIndex: 2,
+  }
+}
+
+addTab() {
+  const { tabs, tabIndex } = this.state;
+  const index = tabIndex + 1;
+
+  tabs.push({
+    title: 'new Tab',
+    name: 'Tab ' + index,
+    content: 'new Tab content',
+  });
+  this.setState({
+    tabs,
+    tabIndex: index,
+  });
+}
+
+removeTab(tab) {
+  const { tabs, tabIndex } = this.state;
+
+  tabs.splice(tab.key.replace(/^\.\$/, ''), 1);
+  this.setState({
+    tabs,
+  });
+}
+
+render() {
+  return (
+    <div>
+      <div style={{marginBottom: '20px'}}>
+        <Button size="small" onClick={() => this.addTab()}>add tab</Button>
+      </div>
+      <Tabs type="card" value="Tab 2" onTabRemove={(tab) => this.removeTab(tab)}>
+        {
+          this.state.tabs.map((item, index) => {
+            return <Tabs.Pane key={index} closable label={item.title} name={item.name}>{item.content}</Tabs.Pane>
+          })
+        }
+      </Tabs>
+    </div>
+  )
+}
+```
+:::
+
+### Tabs Attributes
+| Attribute          | Description            | Type            | Accepted Values                 | Default   |
+|-------------  |---------------- |---------------- |---------------------- |-------- |
+| type          | type of Tab      | string         |   card, border-card            |    —     |
+| closable          |  whether Tab is closable    | boolean  |  -             |     false    |
+| addable          |  whether Tab is addable    | boolean  |  -             |     false    |
+| editable          |  whether Tab is addable and closable    | boolean  |  -             |     false    |
+| activeName       | name of the selected tab   | string  |  —  |  name of first tab |
+| value       | name of the selected tab   | string  |  —  |  name of first tab |
+
+### Tabs Events
+| Event Name          | Description            | Attribute            |
+|-------------  |---------------- |---------------- |
+| onTabClick          |  triggers when a tab is clicked      | clicked tab      |
+| onTabRemove          |    triggers when tab-remove button is clicked    | name of the removed tab  |
+| onTabAdd          |    triggers when tab-add button is clicked    | -  |
+| onTabEdit          |    triggers when tab-add button or tab-remove is clicked    | (targetName, action)  |
+
+### Tabs.Pane Attributes
+| Attribute          | Description            | Type            | Accepted Values                 | Default   |
+|-------------  |---------------- |---------------- |---------------------- |-------- |
+| label          |  title of the tab      | string,node          |          —             |    —     |
+| disabled       | whether Tab is disabled    | boolean  |  —  |  false |
+| name          |  identifier corresponding to the activeName of Tabs, representing the alias of the tab-pane    | string  |         —              |   ordinal number of the tab-pane in the sequence, i.e. the first tab-pane is '1'    |
+| closable       | whether Tab is closable    | boolean  |  —  |  false |

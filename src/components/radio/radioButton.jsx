@@ -1,13 +1,61 @@
-import React from 'react';
-import Radio from './radio';
+/* @flow */
 
-export default class RadioButton extends React.Component {
-  static defaultProps = {
-    prefixCls: 'ko-radio-button',
+import React from 'react';
+import { Component, PropTypes } from '../../utils';
+
+import Radio from './Radio';
+
+export default class RadioButton extends Radio {
+  static elementType = 'RadioButton';
+
+  parent(): Component {
+    return this.context.component;
   }
-  render() {
+
+  size(): string {
+    return this.parent().props.size;
+  }
+
+  isDisabled(): boolean {
+    return this.props.disabled || this.parent().props.disabled;
+  }
+
+  activeStyle(): { backgroundColor: string, borderColor: string, color: string } {
+    return {
+      backgroundColor: this.parent().props.fill || '',
+      borderColor: this.parent().props.fill || '',
+      color: this.parent().props.textColor || ''
+    };
+  }
+
+  render(): React.Element<any> {
     return (
-      <Radio {...this.props} />
-    );
+      <label style={this.style()} className={this.className('ko-radio-button',
+        this.props.size && `ko-radio-button--${this.size()}`, {
+          'is-active': this.state.checked
+        })
+      }>
+        <input
+          type="radio"
+          className="ko-radio-button__orig-radio"
+          checked={this.state.checked}
+          disabled={this.isDisabled()}
+          onChange={this.onChange.bind(this)}
+        />
+        <span className="ko-radio-button__inner" style={this.state.checked ? this.activeStyle() : {}}>
+          {this.props.children || this.props.value}
+        </span>
+      </label>
+    )
   }
 }
+
+RadioButton.contextTypes = {
+  component: PropTypes.any
+};
+
+RadioButton.propTypes = {
+  value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  disabled: PropTypes.bool,
+  name: PropTypes.string
+};

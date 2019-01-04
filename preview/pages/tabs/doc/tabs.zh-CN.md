@@ -1,50 +1,253 @@
----
-category: Components
-subtitle: 标签页
-type: 数据展示
-title: Tabs
-cols: 1
----
+## Tabs 标签页
 
-选项卡切换组件。
+分隔内容上有关联但属于不同类别的数据集合。
 
-## 何时使用
+### 基础用法
+基础的、简洁的标签页。
 
-提供平级的区域将大块内容进行收纳和展现，保持界面整洁。
+:::demo Tabs 组件提供了选项卡功能，默认选中第一个标签页，你也可以通过 `value` 属性来指定当前选中的标签页。
 
-Ant Design 依次提供了三级选项卡，分别用于不同的场景。
+```js
+render() {
+  return (
+    <Tabs activeName="2" onTabClick={ (tab) => console.log(tab.props.name) }>
+      <Tabs.Pane label="用户管理" name="1">用户管理</Tabs.Pane>
+      <Tabs.Pane label="配置管理" name="2">配置管理</Tabs.Pane>
+      <Tabs.Pane label="角色管理" name="3">角色管理</Tabs.Pane>
+      <Tabs.Pane label="定时补偿任务" name="4">定时补偿任务</Tabs.Pane>
+    </Tabs>
+  )
+}
+```
+:::
 
-- 卡片式的页签，提供可关闭的样式，常用于容器顶部。
-- 标准线条式页签，用于容器内部的主功能切换，这是最常用的 Tabs。
-- [RadioButton](/components/radio/#components-radio-demo-radiobutton) 可作为更次级的页签来使用。
+### 选项卡样式
+选项卡样式的标签页。
 
-## API
+:::demo 只需要设置 `type` 属性为 `card` 就可以使选项卡改变为标签风格。
 
-### Tabs
+```js
+render() {
+  return (
+    <Tabs type="card" value="1">
+      <Tabs.Pane label="用户管理" name="1">用户管理</Tabs.Pane>
+      <Tabs.Pane label="配置管理" name="2">配置管理</Tabs.Pane>
+      <Tabs.Pane label="角色管理" name="3">角色管理</Tabs.Pane>
+      <Tabs.Pane label="定时补偿任务" name="4">定时补偿任务</Tabs.Pane>
+    </Tabs>
+  )
+}
+```
+:::
 
-| 参数 | 说明 | 类型 | 默认值 |
-| --- | --- | --- | --- |
-| activeKey | 当前激活 tab 面板的 key | string | 无 |
-| animated | 是否使用动画切换 Tabs，在 `tabPosition=top|bottom` 时有效 | boolean \| {inkBar:boolean, tabPane:boolean} | true, 当 type="card" 时为 false |
-| renderTabBar | 替换TabBar，用于二次封装标签头 | (props: DefaultTabBarProps, DefaultTabBar: React.ReactNode) => React.ReactNode | 无 |
-| defaultActiveKey | 初始化选中面板的 key，如果没有设置 activeKey | string | 第一个面板 |
-| hideAdd | 是否隐藏加号图标，在 `type="editable-card"` 时有效 | boolean | false |
-| size | 大小，提供 `large` `default` 和 `small` 三种大小 | string | 'default' |
-| tabBarExtraContent | tab bar 上额外的元素 | React.ReactNode | 无 |
-| tabBarGutter | tabs 之间的间隙 | number | 无 |
-| tabBarStyle | tab bar 的样式对象 | object | - |
-| tabPosition | 页签位置，可选值有 `top` `right` `bottom` `left` | string | 'top' |
-| type | 页签的基本样式，可选 `line`、`card` `editable-card` 类型 | string | 'line' |
-| onChange | 切换面板的回调 | Function(activeKey) {} | 无 |
-| onEdit | 新增和删除页签的回调，在 `type="editable-card"` 时有效 | (targetKey, action): void | 无 |
-| onNextClick | next 按钮被点击的回调 | Function | 无 |
-| onPrevClick | prev 按钮被点击的回调 | Function | 无 |
-| onTabClick | tab 被点击的回调 | Function | 无 |
+### 可关闭
+可以关闭标签页。
 
-### Tabs.TabPane
+:::demo 通过设置 `closable` 属性来打开 `Tabs` 的可关闭标签效果, `closable` 也可以设置在 `Tab Panel` 中实现部分标签页的可关闭效果。
 
-| 参数 | 说明 | 类型 | 默认值 |
-| --- | --- | --- | --- |
-| forceRender | 被隐藏时是否渲染 DOM 结构 | boolean | false |
-| key | 对应 activeKey | string | 无 |
-| tab | 选项卡头显示文字 | string\|ReactNode | 无 |
+```js
+render() {
+  return (
+    <Tabs type="card" closable activeName="1" onTabRemove={ (tab) => console.log(tab.props.name) }>
+      <Tabs.Pane label="用户管理" name="1">用户管理</Tabs.Pane>
+      <Tabs.Pane label="配置管理" name="2">配置管理</Tabs.Pane>
+      <Tabs.Pane label="角色管理" name="3">角色管理</Tabs.Pane>
+      <Tabs.Pane label="定时补偿任务" name="4">定时补偿任务</Tabs.Pane>
+    </Tabs>
+  )
+}
+```
+:::
+
+### 卡片化
+卡片化的标签页。
+
+:::demo 将`type`设置为`border-card`。
+
+```js
+render() {
+  return (
+    <Tabs type="border-card" activeName="1">
+      <Tabs.Pane label="用户管理" name="1">用户管理</Tabs.Pane>
+      <Tabs.Pane label="配置管理" name="2">配置管理</Tabs.Pane>
+      <Tabs.Pane label="角色管理" name="3">角色管理</Tabs.Pane>
+      <Tabs.Pane label="定时补偿任务" name="4">定时补偿任务</Tabs.Pane>
+    </Tabs>
+  )
+}
+```
+:::
+
+### 自定义标签页
+可以通过 node 类型来实现自定义标签页的内容。
+
+:::demo
+
+```js
+render() {
+  const label = <span><Icon name="date" /> 用户管理</span>
+
+  return (
+    <Tabs type="border-card" activeName="1">
+      <Tabs.Pane label={label} name="1">用户管理</Tabs.Pane>
+      <Tabs.Pane label="配置管理" name="2">配置管理</Tabs.Pane>
+      <Tabs.Pane label="角色管理" name="3">角色管理</Tabs.Pane>
+      <Tabs.Pane label="定时补偿任务" name="4">定时补偿任务</Tabs.Pane>
+    </Tabs>
+  )
+}
+```
+:::
+
+### 动态增减标签页
+增减标签页按钮只能在选项卡样式的标签页下使用
+
+:::demo
+
+```js
+constructor() {
+  super();
+  this.state = {
+    tabs: [{
+      title: 'Tab 1',
+      name: 'Tab 1',
+      content: 'Tab 1 content',
+    }, {
+      title: 'Tab 2',
+      name: 'Tab 2',
+      content: 'Tab 2 content',
+    }],
+    tabIndex: 2,
+  }
+}
+
+editTab(action, tab) {
+  if (action === 'add') {
+    const { tabs, tabIndex } = this.state;
+    const index = tabIndex + 1;
+
+    tabs.push({
+      title: 'new Tab',
+      name: 'Tab ' + index,
+      content: 'new Tab content',
+    });
+    this.setState({
+      tabs,
+      tabIndex: index,
+    });
+  }
+
+  if (action === 'remove') {
+    const { tabs } = this.state;
+
+    console.log(action, tab);
+    tabs.splice(tab.key.replace(/^\.\$/, ''), 1);
+    this.setState({
+      tabs,
+    });
+  }
+}
+
+render() {
+  return (
+    <Tabs type="card" value="Tab 2" editable onTabEdit={(action, tab) => this.editTab(action, tab)}>
+      {
+        this.state.tabs.map((item, index) => {
+          return <Tabs.Pane key={index} closable label={item.title} name={item.name}>{item.content}</Tabs.Pane>
+        })
+      }
+    </Tabs>
+  )
+}
+```
+:::
+
+### 动态添加标签页
+
+:::demo
+
+```js
+constructor() {
+  super();
+  this.state = {
+    tabs: [{
+      title: 'Tab 1',
+      name: 'Tab 1',
+      content: 'Tab 1 content',
+    }, {
+      title: 'Tab 2',
+      name: 'Tab 2',
+      content: 'Tab 2 content',
+    }],
+    tabIndex: 2,
+  }
+}
+
+addTab() {
+  const { tabs, tabIndex } = this.state;
+  const index = tabIndex + 1;
+
+  tabs.push({
+    title: 'new Tab',
+    name: 'Tab ' + index,
+    content: 'new Tab content',
+  });
+  this.setState({
+    tabs,
+    tabIndex: index,
+  });
+}
+
+removeTab(tab) {
+  const { tabs, tabIndex } = this.state;
+
+  tabs.splice(tab.key.replace(/^\.\$/, ''), 1);
+  this.setState({
+    tabs,
+  });
+}
+
+render() {
+  return (
+    <div>
+      <div style={{marginBottom: '20px'}}>
+        <Button size="small" onClick={() => this.addTab()}>add tab</Button>
+      </div>
+      <Tabs type="card" value="Tab 2" onTabRemove={(tab) => this.removeTab(tab)}>
+        {
+          this.state.tabs.map((item, index) => {
+            return <Tabs.Pane key={index} closable label={item.title} name={item.name}>{item.content}</Tabs.Pane>
+          })
+        }
+      </Tabs>
+    </div>
+  )
+}
+```
+:::
+
+### Tabs Attributes
+| 参数          | 说明            | 类型            | 可选值                 | 默认值   |
+|-------------  |---------------- |---------------- |---------------------- |-------- |
+| type          | 风格类型      | string         |   card, border-card            |    —     |
+| closable          |  标签是否可关闭    | boolean  |  -             |     false    |
+| addable          |  标签是否可增加    | boolean  |  -             |     false    |
+| editable          |  标签是否同时可增加和关闭    | boolean  |  -             |     false    |
+| activeName       | 选中选项卡的 name    | string  |  —  |  第一个选项卡的 name |
+| value       | 绑定值，选中选项卡的name    | string  |  —  |  第一个选项卡的 name |
+
+### Tabs Events
+| 事件名称          | 说明            | 回调参数            |
+|-------------  |---------------- |---------------- |
+| onTabClick          |  tab 被选中时触发      | 被选中的标签 tab 实例         |
+| onTabRemove          |    点击 tab 移除按钮后触发    | 被删除的标签的 name  |
+| onTabAdd          |    点击 tabs 的新增按钮后触发    | -  |
+| onTabEdit          |    点击 tabs 的新增按钮或 tab 被关闭后触发    | (targetName, action)  |
+
+### Tabs.Pane Attributes
+| 参数          | 说明            | 类型            | 可选值                 | 默认值   |
+|-------------  |---------------- |---------------- |---------------------- |-------- |
+| label          | 选项卡标题      | string,node          |          —             |    —     |
+| disabled       | 是否禁用    | boolean  |  —  |  false |
+| name          |  与选项卡 activeName 对应的标识符，表示选项卡别名    | string  |         —              |     该选项卡在选项卡列表中的顺序值，如第一个选项卡则为'1'    |
+| closable       | 标签是否可关闭    | boolean  |  —  |  false |

@@ -7,6 +7,7 @@ export { default as Alert } from './components/alert';
 export { default as Select } from './components/select';
 export { default as Card } from './components/card';
 export { default as Input } from './components/input';
+export { default as AutoComplete } from './components/auto-complete';
 export { default as Checkbox } from './components/checkbox';
 export { default as Radio } from './components/radio';
 export { default as Tabs } from './components/tabs';

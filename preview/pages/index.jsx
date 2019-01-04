@@ -21,6 +21,8 @@ export default {
     },
     "Views": {
       'card': require('./card'),
+      'tag': require('./tag'),
+      
     },
     "Navigation": {
       'tabs': require('./tabs'),

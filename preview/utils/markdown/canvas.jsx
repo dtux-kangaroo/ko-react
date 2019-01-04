@@ -9,10 +9,8 @@ import Editor from '../editor'
 export default class Canvas extends React.Component {
   constructor(props) {
     super(props)
-     console.log(this.props,this.props.children,'ewewwerr');
     this.playerId = `${parseInt(Math.random() * 1e9).toString(36)}`
     this.document = this.props.children.match(/([^]*)\n?(```[^]+```)/);
-    console.log(this.document,'document');
     this.description = marked(this.document[1])
     this.source = this.document[2].match(/```(.*)\n?([^]+)```/)
 

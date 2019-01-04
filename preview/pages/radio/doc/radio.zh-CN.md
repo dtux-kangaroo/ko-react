@@ -1,47 +1,158 @@
+## Radio 单选框
 
-- category: Components
-- subtitle: 单选框
-- type: 数据录入
-- title: Radio
+在一组备选项中进行单选
 
-单选框。
+### 基础用法
 
-## 何时使用
+由于选项默认可见，不宜过多，若选项过多，建议使用 Select 选择器。
 
-- 用于在多个备选项中选中单个状态。
-- 和 Select 的区别是，Radio 所有选项默认可见，方便用户在比较中选择，因此选项不宜过多。
+:::demo 要使用 Radio 组件，需要设置`value`绑定变量，可以通过`checked`来指定Radio的选中状态。
 
-## API
+```js
+constructor(props) {
+  super(props);
 
-### Radio
+  this.state = {
+    value: 1
+  }
+}
 
-| 参数 | 说明 | 类型 | 默认值 |
-| --- | --- | --- | --- |
-| autoFocus | 自动获取焦点 | boolean | false |
-| checked | 指定当前是否选中 | boolean | false |
-| defaultChecked | 初始是否选中 | boolean | false |
-| value | 根据 value 进行比较，判断是否选中 | any | - |
+onChange(value) {
+  this.setState({ value });
+}
 
-### RadioGroup
+render() {
+  return (
+    <div>
+      <Radio value="1" checked={this.state.value === 1} onChange={this.onChange.bind(this)}>备选项</Radio>
+      <Radio value="2" checked={this.state.value === 2} onChange={this.onChange.bind(this)}>备选项</Radio>
+    </div>
+  )
+}
+```
+:::
 
-单选框组合，用于包裹一组 `Radio`。
+### 禁用状态
 
-| 参数 | 说明 | 类型 | 默认值 |
-| --- | --- | --- | --- |
-| defaultValue | 默认选中的值 | any | - |
-| disabled | 禁选所有子单选器 | boolean | false |
-| name | RadioGroup 下所有 `input[type="radio"]` 的 `name` 属性 | string | - |
-| options | 以配置形式设置子元素 | string\[] \| Array&lt;{ label: string value: string disabled?: boolean }> | - |
-| size | 大小，只对按钮样式生效 | `large` \| `default` \| `small` | `default` |
-| value | 用于设置当前选中的值 | any | - |
-| onChange | 选项变化时的回调函数 | Function(e:Event) | - |
-| buttonStyle | RadioButton 的风格样式，目前有描边和填色两种风格 | `outline` \| `solid` | `outline` |
+单选框不可用的状态。
 
-## 方法
+:::demo 注意：请牢记，选中的条件是绑定的变量值等于`value`中的值。只要在`Radio`元素中设置`disabled`属性即可，它接受一个`Boolean`，`true`为禁用。
 
-### Radio
+```js
+render() {
+  return (
+    <div>
+      <Radio value="1" disabled={true}>备选项</Radio>
+      <Radio value="2" disabled={true}>备选项</Radio>
+    </div>
+  )
+}
+```
+:::
 
-| 名称 | 描述 |
-| --- | --- |
-| blur() | 移除焦点 |
-| focus() | 获取焦点 |
+### 单选框组
+
+适用于在多个互斥的选项中选择的场景
+
+:::demo 结合`Radio.Group`元素和子元素`Radio`可以实现单选组，在`Radio.Group`中绑定`value`，在`Radio`中设置好`value`即可，无需再给每一个`Radio`绑定变量，另外，还提供了`onChange`事件来响应变化，它会传入一个参数`value`。
+
+```js
+constructor(props) {
+  super(props);
+
+  this.state = {
+    value: 3
+  }
+}
+
+onChange(value) {
+  this.setState({ value });
+}
+
+render() {
+  return (
+    <Radio.Group value={this.state.value} onChange={this.onChange.bind(this)}>
+      <Radio value="3">备选项</Radio>
+      <Radio value="6">备选项</Radio>
+      <Radio value="9">备选项</Radio>
+    </Radio.Group>
+  )
+}
+```
+:::
+
+### 按钮样式
+
+按钮样式的单选组合。
+
+:::demo 只需要把`Radio`元素换成`Radio.Button`元素即可，此外，Element 还提供了`size`属性给按钮组，支持`large`和`small`两种（如果不设定为默认）。
+
+```js
+constructor(props) {
+  super(props);
+
+  this.state = {
+    radio3: '上海',
+    radio4: '上海',
+    radio5: '上海'
+  }
+}
+
+onChange(key, value) {
+  this.setState({
+    [key]: value
+  });
+}
+
+render() {
+  return (
+    <div>
+      <Radio.Group value={this.state.radio3} onChange={this.onChange.bind(this, 'radio3')}>
+        <Radio.Button value="上海" />
+        <Radio.Button value="北京" />
+        <Radio.Button value="广州" />
+        <Radio.Button value="深圳" />
+      </Radio.Group>
+      <Radio.Group value={this.state.radio4} onChange={this.onChange.bind(this, 'radio4')}>
+        <Radio.Button value="上海" />
+        <Radio.Button value="北京" />
+        <Radio.Button value="广州" disabled={true} />
+        <Radio.Button value="深圳" />
+      </Radio.Group>
+      <Radio.Group value={this.state.radio5} disabled={true}>
+        <Radio.Button value="上海" />
+        <Radio.Button value="北京" />
+        <Radio.Button value="广州" />
+        <Radio.Button value="深圳" />
+      </Radio.Group>
+    </div>
+  )
+}
+```
+:::
+
+### Radio Attributes
+| 参数      | 说明    | 类型      | 可选值       | 默认值   |
+|---------- |-------- |---------- |-------------  |-------- |
+| checked     | Radio是否被选中   | boolean    |       —        |      false   |
+| value     | Radio 的 value   | string,number,boolean    |       —        |      —   |
+| disabled  | 是否禁用    | boolean   | — | false   |
+| name | 原生 name 属性 | string    |      —         |     —    |
+
+### Radio-group Attributes
+| 参数      | 说明    | 类型      | 可选值       | 默认值   |
+|---------- |-------- |---------- |-------------  |-------- |
+| size     | Radio 按钮组尺寸   | string  | large, small  |    —     |
+| fill  | 按钮激活时的填充色和边框色    | string   | — | #20a0ff   |
+| textColor  | 按钮激活时的文本颜色    | string   | — | #ffffff   |
+
+### Radio-group Events
+| 事件名称 | 说明 | 回调参数 |
+|---------- |-------- |---------- |
+| onChange  | 绑定值变化时触发的事件 |  选中的 Radio label 值  |
+
+### Radio-button Attributes
+| 参数      | 说明    | 类型      | 可选值       | 默认值   |
+|---------- |-------- |---------- |-------------  |-------- |
+| value     | Radio 的 value  | string,number  |        —       |     —    |
+| disabled  | 是否禁用    | boolean   | — | false   |

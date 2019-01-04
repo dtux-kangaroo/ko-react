@@ -1,29 +1,96 @@
-import RcCheckbox from 'rc-checkbox';
-import React,{PureComponent} from 'react';
-import classNames from 'classnames';
+/* @flow */
 
-export default class Radio extends PureComponent {
-  static defaultProps = {
-    prefixCls: 'ko-radio',
+import React from 'react';
+import { Component, PropTypes } from '../../utils';
+
+type State = {
+  checked: boolean,
+  focus?: boolean
+};
+
+export default class Radio extends Component {
+  static elementType = 'Radio';
+
+  state: State;
+
+  constructor(props: Object) {
+    super(props);
+
+    this.state = {
+      checked: this.getChecked(props)
+    };
   }
-  render() {
-    const { prefixCls, children, checked, disabled, className, style } = this.props;
-    const wrapperClassString = classNames({
-      [`${prefixCls}-wrapper`]: true,
-      [`${prefixCls}-wrapper-checked`]: checked,
-      [`${prefixCls}-wrapper-disabled`]: disabled,
-      [className]: !!className,
-    });
-    const classString = classNames({
-      [`${prefixCls}`]: true,
-      [`${prefixCls}-checked`]: checked,
-      [`${prefixCls}-disabled`]: disabled,
-    });
+
+  componentWillReceiveProps(props: Object) {
+    const checked = this.getChecked(props);
+
+    if (this.state.checked != checked) {
+      this.setState({ checked });
+    }
+  }
+
+  onChange(e: SyntheticInputEvent) {
+    const checked = e.target.checked;
+
+    if (checked) {
+      if (this.props.onChange) {
+        this.props.onChange(this.props.value);
+      }
+    }
+
+    this.setState({ checked });
+  }
+
+  onFocus() {
+    this.setState({
+      focus: true
+    })
+  }
+
+  onBlur() {
+    this.setState({
+      focus: false
+    })
+  }
+
+  getChecked(props: Object): boolean {
+    return props.model == props.value || Boolean(props.checked)
+  }
+
+  render(): React.Element<any> {
+    const { checked, focus } = this.state;
+    const { disabled, value, children } = this.props;
+
     return (
-      <label className={wrapperClassString} style={style}>
-        <RcCheckbox {...this.props} className={classString} style={null} children={null} />
-        {children ? <span>{children}</span> : null}
+      <label style={this.style()} className={this.className('ko-radio')}>
+        <span className={this.classNames({
+          'ko-radio__input': true,
+          'is-checked': checked,
+          'is-disabled': disabled,
+          'is-focus': focus
+        })}>
+          <span className="ko-radio__inner"></span>
+          <input
+            type="radio"
+            className="ko-radio__original"
+            checked={checked}
+            disabled={disabled}
+            onChange={this.onChange.bind(this)}
+            onFocus={this.onFocus.bind(this)}
+            onBlur={this.onBlur.bind(this)}
+          />
+        </span>
+        <span className="ko-radio__label">
+          {children || value}
+        </span>
       </label>
-    );
+    )
   }
+}
+
+Radio.propTypes = {
+  value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
+  onChange: PropTypes.func,
+  disabled: PropTypes.bool,
+  checked: PropTypes.bool
 }
