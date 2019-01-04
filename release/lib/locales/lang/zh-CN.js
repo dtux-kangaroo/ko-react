@@ -4,7 +4,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var _default = {
-  el: {
+  ko: {
     colorpicker: {
       confirm: '确定',
       clear: '清空'

@@ -1,5 +1,5 @@
 export default {
-  el: {
+  ko: {
     colorpicker: {
       confirm: '确定',
       clear: '清空'
