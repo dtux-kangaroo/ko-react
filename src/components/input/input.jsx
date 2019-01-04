@@ -1,65 +1,29 @@
-import React, { Component, PropTypes } from 'react';
-import classNames from 'classnames';
-import calculateNodeHeight from './calculateNodeHeight';
-import omit from 'object.omit';
+ 
+import React from 'react';
+import { Component, PropTypes } from '../../utils';
 
-function fixControlledValue(value) {
-  if (typeof value === 'undefined' || value === null) {
-    return '';
-  }
-  return value;
-}
+import calcTextareaHeight from './calcTextareaHeight'
 
-function onNextFrame(cb) {
-  if (window.requestAnimationFrame) {
-    return window.requestAnimationFrame(cb);
-  }
-  return window.setTimeout(cb, 1);
-}
-
-function clearNextFrameAction(nextFrameId) {
-  if (window.cancelAnimationFrame) {
-    window.cancelAnimationFrame(nextFrameId);
-  } else {
-    window.clearTimeout(nextFrameId);
-  }
+type State = {
+  textareaStyle: { resize: string, height?: string }
 }
 
 export default class Input extends Component {
+  state: State;
+
   static defaultProps = {
-    defaultValue: '',
-    disabled: false,
-    prefixCls: 'ko-input',
     type: 'text',
-    onPressEnter() {},
-    onKeyDown() {},
-    onChange() {},
     autosize: false,
+    rows: 2,
+    trim: false,
+    autoComplete: 'off'
   }
 
-  static propTypes = {
-    type: PropTypes.string,
-    id: PropTypes.oneOfType([
-      PropTypes.string,
-      PropTypes.number,
-    ]),
-    size: PropTypes.oneOf(['small', 'default', 'large']),
-    disabled: PropTypes.bool,
-    value: PropTypes.any,
-    defaultValue: PropTypes.any,
-    className: PropTypes.string,
-    addonBefore: PropTypes.node,
-    addonAfter: PropTypes.node,
-    prefixCls: PropTypes.string,
-    autosize: PropTypes.oneOfType([PropTypes.bool, PropTypes.object]),
-    onPressEnter: PropTypes.func,
-    onKeyDown: PropTypes.func,
-  }
-
-  constructor(props) {
+  constructor(props: Object) {
     super(props);
+
     this.state = {
-      textareaStyles: null,
+      textareaStyle: { resize: props.resize }
     };
   }
 
@@ -67,130 +31,179 @@ export default class Input extends Component {
     this.resizeTextarea();
   }
 
-  componentWillReceiveProps(nextProps) {
-    // Re-render with the new content then recalculate the height as required.
-    if (this.props.value !== nextProps.value) {
-      if (this.nextFrameActionId) {
-        clearNextFrameAction(this.nextFrameActionId);
-      }
-      this.nextFrameActionId = onNextFrame(this.resizeTextarea);
+  /* <Instance Methods */
+
+  focus(): void {
+    setTimeout(() => {
+      (this.refs.input || this.refs.textarea).focus();
+    });
+  }
+
+  blur(): void {
+    setTimeout(() => {
+      (this.refs.input || this.refs.textarea).blur();
+    });
+  }
+
+  /* Instance Methods> */
+
+  fixControlledValue(value: mixed): mixed {
+    if (typeof value === 'undefined' || value === null) {
+      return '';
+    }
+    return value;
+  }
+
+  handleChange(e: SyntheticInputEvent): void {
+    const { onChange } = this.props;
+
+    if (onChange) {
+      onChange(e.target.value);
+    }
+    this.resizeTextarea();
+  }
+
+  handleFocus(e: SyntheticEvent): void {
+    const { onFocus } = this.props;
+    if (onFocus) onFocus(e)
+  }
+
+  handleBlur(e: SyntheticEvent): void {
+    const { onBlur } = this.props
+    if (this.props.trim) this.handleTrim()
+    if (onBlur) onBlur(e)
+  }
+
+  handleTrim(): void {
+    this.refs.input.value = this.refs.input.value.trim()
+    if(this.props.onChange) {
+      // this's for controlled components
+      this.props.onChange(this.refs.input.value.trim())
     }
   }
 
-  handleKeyDown = (e) => {
-    if (e.keyCode === 13) {
-      this.props.onPressEnter(e);
+  handleIconClick(e: SyntheticEvent): void {
+    if (this.props.onIconClick) {
+      this.props.onIconClick(e)
     }
-    this.props.onKeyDown(e);
   }
 
-  handleTextareaChange = (e) => {
-    if (!('value' in this.props)) {
-      this.resizeTextarea();
-    }
-    this.props.onChange(e);
-  }
+  resizeTextarea(): void {
+    const { autosize, type } = this.props;
 
-  resizeTextarea = () => {
-    const { type, autosize } = this.props;
-    if (type !== 'textarea' || !autosize || !this.refs.input) {
+    if (!autosize || type !== 'textarea') {
       return;
     }
-    const minRows = autosize ? autosize.minRows : null;
-    const maxRows = autosize ? autosize.maxRows : null;
-    const textareaStyles = calculateNodeHeight(this.refs.input, false, minRows, maxRows);
-    this.setState({ textareaStyles });
+
+    const minRows = autosize.minRows;
+    const maxRows = autosize.maxRows;
+    const textareaCalcStyle = calcTextareaHeight(this.refs.textarea, minRows, maxRows);
+
+    this.setState({
+      textareaStyle: Object.assign({}, this.state.textareaStyle, textareaCalcStyle)
+    });
   }
 
-  renderLabledInput(children) {
-    const props = this.props;
-    const wrapperClassName = `${props.prefixCls}-group`;
-    const addonClassName = `${wrapperClassName}-addon`;
-    const addonBefore = props.addonBefore ? (
-      <span className={addonClassName}>
-        {props.addonBefore}
-      </span>
-    ) : null;
+  render(): React.Element<any> {
+    const { type, size, prepend, append, icon, autoComplete, validating, rows, onMouseEnter, onMouseLeave, trim,
+      ...otherProps
+    } = this.props;
 
-    const addonAfter = props.addonAfter ? (
-      <span className={addonClassName}>
-        {props.addonAfter}
-      </span>
-    ) : null;
-
-    const className = classNames({
-      [`${props.prefixCls}-wrapper`]: true,
-      [wrapperClassName]: (addonBefore || addonAfter),
-    });
-
-    return (
-      <span className={className}>
-        {addonBefore}
-        {children}
-        {addonAfter}
-      </span>
+    const classname = this.classNames(
+      type === 'textarea' ? 'el-textarea' : 'el-input',
+      size && `el-input--${size}`, {
+        'is-disabled': this.props.disabled,
+        'el-input-group': prepend || append,
+        'el-input-group--append': !!append,
+        'el-input-group--prepend': !!prepend
+      }
     );
-  }
 
-  renderInput() {
-    const props = { ...this.props };
+    if ('value' in this.props) {
+      otherProps.value = this.fixControlledValue(this.props.value);
 
-    // Fix https://fb.me/react-unknown-prop
-    const otherProps = omit(this.props, [
-      'prefixCls',
-      'onPressEnter',
-      'autosize',
-      'addonBefore',
-      'addonAfter',
-    ]);
-
-    const prefixCls = props.prefixCls;
-    if (!props.type) {
-      return props.children;
-    }
-
-    const inputClassName = classNames({
-      [prefixCls]: true,
-      [`${prefixCls}-sm`]: props.size === 'small',
-      [`${prefixCls}-lg`]: props.size === 'large',
-      [props.className]: !!props.className,
-    });
-
-    if ('value' in props) {
-      otherProps.value = fixControlledValue(props.value);
-      // Input elements must be either controlled or uncontrolled,
-      // specify either the value prop, or the defaultValue prop, but not both.
       delete otherProps.defaultValue;
     }
 
-    switch (props.type) {
-      case 'textarea':
-        return (
-          <textarea
-            {...otherProps}
-            style={{
-              ...props.style,
-              ...this.state.textareaStyles,
-            }}
-            className={inputClassName}
-            onKeyDown={this.handleKeyDown}
-            onChange={this.handleTextareaChange}
+    delete otherProps.resize;
+    delete otherProps.style;
+    delete otherProps.autosize;
+    delete otherProps.onIconClick;
+
+    if (type === 'textarea') {
+      return (
+        <div style={this.style()} className={this.className(classname)}>
+          <textarea { ...otherProps }
+            ref="textarea"
+            className="el-textarea__inner"
+            style={this.state.textareaStyle}
+            rows={rows}
+            onChange={this.handleChange.bind(this)}
+            onFocus={this.handleFocus.bind(this)}
+            onBlur={this.handleBlur.bind(this)}
+          ></textarea>
+        </div>
+      )
+    } else {
+      return (
+        <div style={this.style()} className={this.className(classname)} onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave}>
+          { prepend && <div className="el-input-group__prepend">{prepend}</div> }
+          { typeof icon === 'string' ? <i className={`el-input__icon el-icon-${icon}`} onClick={this.handleIconClick.bind(this)}>{prepend}</i> : icon }
+          <input { ...otherProps }
             ref="input"
+            type={type}
+            className="el-input__inner"
+            autoComplete={autoComplete}
+            onChange={this.handleChange.bind(this)}
+            onFocus={this.handleFocus.bind(this)}
+            onBlur={this.handleBlur.bind(this)}
           />
-        );
-      default:
-        return (
-          <input
-            {...otherProps}
-            className={inputClassName}
-            onKeyDown={this.handleKeyDown}
-            ref="input"
-          />
-        );
+          { validating && <i className="el-input__icon el-icon-loading"></i> }
+          { append && <div className="el-input-group__append">{append}</div> }
+        </div>
+      )
     }
   }
+}
 
-  render() {
-    return this.renderLabledInput(this.renderInput());
-  }
+Input.propTypes = {
+  // base
+  type: PropTypes.string,
+  icon: PropTypes.oneOfType([PropTypes.element, PropTypes.string]),
+  disabled: PropTypes.bool,
+  name: PropTypes.string,
+  placeholder: PropTypes.string,
+  readOnly: PropTypes.bool,
+  autoFocus: PropTypes.bool,
+  maxLength: PropTypes.number,
+  minLength: PropTypes.number,
+  defaultValue: PropTypes.any,
+  value: PropTypes.any,
+  trim: PropTypes.bool,
+
+  // type !== 'textarea'
+  size: PropTypes.oneOf(['large', 'small', 'mini']),
+  prepend: PropTypes.node,
+  append: PropTypes.node,
+
+  // type === 'textarea'
+  autosize: PropTypes.oneOfType([ PropTypes.bool, PropTypes.object ]),
+  rows: PropTypes.number,
+  resize: PropTypes.oneOf(['none', 'both', 'horizontal', 'vertical']),
+
+  // event
+  onFocus: PropTypes.func,
+  onBlur: PropTypes.func,
+  onChange: PropTypes.func,
+  onIconClick: PropTypes.func,
+  onMouseEnter: PropTypes.func,
+  onMouseLeave: PropTypes.func,
+
+  // autoComplete
+  autoComplete: PropTypes.string,
+  inputSelect: PropTypes.func,
+
+  // form related
+  form: PropTypes.string,
+  validating: PropTypes.bool,
 }
