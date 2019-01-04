@@ -114,13 +114,13 @@ export default class App extends React.Component {
             </h1>
             <ul className="nav">
               <li className="nav-item">
-                <a href={`https://github.com/dtux-kangaroo/ko-react.git`} target="_blank" rel="noopener noreferrer">Github</a>
-              </li>
-              <li className="nav-item">
                 <a className="active">{this.getLocale('misc.component')}</a>
               </li>
               <li className="nav-item">
-                <a href={`https://github.com/dtux-kangaroo/resource`} target="_blank" rel="noopener noreferrer">{this.getLocale('misc.resource')}</a>
+                <a className="">设计</a>
+              </li>
+              <li className="nav-item">
+                <a href={`https://github.com/dtux-kangaroo/ko-resouce`} target="_blank" rel="noopener noreferrer">{this.getLocale('misc.resource')}</a>
               </li>
               <li className="nav-item">
                 <span className={classnames('nav-lang', { active: this.state.locale === 'zh-CN'})} onClick={this.setLocale.bind(this, 'zh-CN')}>中文</span>
@@ -128,6 +128,16 @@ export default class App extends React.Component {
                 <span className={classnames('nav-lang', { active: this.state.locale === 'en-US'})} onClick={this.setLocale.bind(this, 'en-US')}>En</span>
               </li>
             </ul>
+            <ul className="nav-right">
+                <li className="nav-item"> <a href="https://github.com/dtux-react" target="_blank">github</a></li>
+                <li className="nav-item"> <a href="https://zhuanlan.zhihu.com/c_109929958" target="_blank">社区</a></li>
+                <li className="nav-item">
+                  <select>
+                    <option>1</option>
+                    <option>2</option>
+                  </select>
+                </li>
+              </ul>
           </div>
         </header>:null}
         <div className="main container">
