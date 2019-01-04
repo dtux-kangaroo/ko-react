@@ -16,7 +16,9 @@ export default {
        'select':require('./select')
      },
     'Feedback':{
-      'alert':require('./alert')
+      'alert':require('./alert'),
+      'dialog':require('./dialog'),
+      'loading':require('./loading')
     }
   }
 }

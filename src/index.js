@@ -5,3 +5,5 @@ export { default as Layout } from './components/layout';
 export { default as Icon } from './components/icon';
 export { default as Alert } from './components/alert';
 export { default as Select } from './components/select';
+export { default as Loading } from './components/loading';
+export { default as Dialog } from './components/dialog';
