@@ -15,3 +15,4 @@ export { default as Tag } from './components/tag';
 export { default as InputNumber } from './components/input-number';
 export { default as Loading } from './components/loading';
 export { default as Dialog } from './components/dialog';
+export { default as Switch } from './components/switch';

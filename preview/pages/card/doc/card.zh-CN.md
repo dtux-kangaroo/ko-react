@@ -11,13 +11,13 @@ render() {
   return (
     <Card
       className="box-card"
-      header={
+      title={
         <div className="clearfix">
           <span style={{ "lineHeight": "36px" }}>卡片名称</span>
-          <span style={{ "float": "right" }}>
-            <Button type="primary">操作按钮</Button>
-          </span>
         </div>
+      }
+      extra ={
+        <Button type="primary">操作按钮</Button>
       }
     >
       <div className="text item">列表内容 1</div>
@@ -57,14 +57,14 @@ render() {
 ```js
 render() {
   return (
-    <Layout.Row>
+    <Layout.Row className="box-card">
       <Layout.Col span={ 8 } offset={ 0 }>
         <Card bodyStyle={{ padding: 0 }}>
-          <img src={this.props.imgSrc} className="image" />
+          <img src="imgs/daisu2.jpg" className="image" />
           <div style={{ padding: 14 }}>
-            <span>好吃的汉堡</span>
+            <span>袋鼠云</span>
             <div className="bottom clearfix">
-              <time className="time">2016-10-21 16:19</time>
+              <time className="time">2019-01-22 16:19</time>
               <Button type="text" className="button">操作按钮</Button>
             </div>
           </div>
@@ -72,11 +72,52 @@ render() {
       </Layout.Col>
       <Layout.Col span={ 8 } offset={ 2 }>
         <Card bodyStyle={{ padding: 0 }}>
-          <img src={this.props.imgSrc} className="image" />
+          <img src="imgs/daisu1.jpg" className="image" />
           <div style={{ padding: 14 }}>
-            <span>好吃的汉堡</span>
+            <span>袋鼠云</span>
             <div className="bottom clearfix">
-              <time className="time">2016-10-21 16:19</time>
+              <time className="time">2019-01-22 16:19</time>
+              <Button type="text" className="button">操作按钮</Button>
+            </div>
+          </div>
+        </Card>
+      </Layout.Col>
+    </Layout.Row>
+  )
+}
+```
+:::
+### 预加载卡片
+
+数据读入前会有文本块样式。
+
+:::demo 动态设置loading加载状态。
+```js
+constructor(props) {
+  super(props);
+
+  this.state = {
+    loading: false,
+  }
+}
+render() {
+  const {loading} = this.state;
+  return (
+    <Layout.Row className="box-card">
+      <Layout.Col span={ 8 } offset={ 0 }>
+        <Switch
+          value={this.state.loading}
+          onColor="#13ce66"
+          style={{marginBottom:10}}
+          onChange={(value)=>{this.setState({loading: value})}}
+        >
+        
+        </Switch>
+        <Card title="预加载卡片" loading={loading}>
+          <div>
+            <span>袋鼠云</span>
+            <div className="bottom clearfix">
+              <time className="time">2019-01-22 16:19</time>
               <Button type="text" className="button">操作按钮</Button>
             </div>
           </div>
@@ -91,5 +132,10 @@ render() {
 ### Attributes
 | 参数      | 说明    | 类型      | 可选值       | 默认值   |
 |---------- |-------- |---------- |-------------  |-------- |
-| header | 设置 header，也可以通过 `slot#header` 传入 DOM | string| — | — |
-| bodyStyle | 设置 body 的样式| object| — | { padding: '20px' } |
+| title | 设置 title  | `any`| — | — |
+| extra | 设置 头部extra   | `any`| — | — |
+| className | 设置card组件类名 | string| — | — |
+| loading | 设置card加载状态 | bool|true,false | false |
+| bordered | 设置card body表框| bool| true,false| false |
+| style | 设置 card组件的样式| object| — | { } |
+| bodyStyle | 设置 card body 的样式| object| — | { padding: '20px' } |

@@ -96,21 +96,21 @@
 
   @include m(wide) {
     .ko-switch__label {
-      &.ko-switch__labko--left {
+      &.ko-switch__label--left {
         span {
-          left: 10px;
+          margin-left: 10px;
         }
       }
-      &.ko-switch__labko--right {
+      &.ko-switch__label--right {
         span {
-          right: 10px;
+          margin-right: 10px;
         }
       }
     }
   }
 
-  & .labko-fade-enter,
-  & .labko-fade-leave-active {
+  & .label-fade-enter,
+  & .label-fade-leave-active {
     opacity: 0;
   }
 }

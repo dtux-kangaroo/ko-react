@@ -18,6 +18,7 @@ export default {
       'checkbox': require('./checkbox'),
       'radio':require('./radio'),
       'select':require('./select'),
+      'switch':require('./switch')
     },
     "Views": {
       'card': require('./card'),

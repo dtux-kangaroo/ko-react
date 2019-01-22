@@ -42,6 +42,7 @@
     "copy-webpack-plugin": "^4.6.0",
     "core-js": "^2.5.6",
     "css-loader": "^0.28.7",
+    "cz-conventional-changelog": "^2.1.0",
     "enzyme": "^3.2.0",
     "enzyme-adapter-react-16": "^1.1.0",
     "file-loader": "^1.1.5",
@@ -87,5 +88,10 @@
   "peerDependencies": {
     "react": "*",
     "react-dom": "*"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
   }
 }
