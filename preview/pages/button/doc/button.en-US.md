@@ -8,6 +8,7 @@ Commonly used button.
 
 ```js
 render() {
+  console.log("btn")
   return (
     <div>
       <Button>Default Button</Button>
