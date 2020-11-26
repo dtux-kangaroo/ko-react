@@ -176,29 +176,24 @@ constructor(props) {
   }
   this.handleEditInputChange = this.handleEditInputChange.bind(this)
 }
-//处理每个关闭按钮
 handleClose(removedTag){
   const dynamicTags = this.state.dynamicTags.filter((tag) => tag !== removedTag);
   this.setState({ dynamicTags });
 };
 
-//1.新增按钮展示
 showInput() {
   this.setState({ inputVisible: true }, () => {
     this.refs.saveTagInput.focus();
   });
 }
-//1.新增数值获取
 onChange(value) {
   this.setState({ inputValue: value });
 }
-//2.新增按钮--enter键
 onAddKeyUp(e){
   if (e.keyCode === 13) {
     this.handleInputConfirm();
   }
 }
-//新增确定功能
 handleInputConfirm() {
   let { dynamicTags ,inputValue} = this.state
 
@@ -211,17 +206,14 @@ handleInputConfirm() {
     inputValue:""
   })
 }
-//5.响应每次编辑的变化内容
 handleEditInputChange(e){
   this.setState({ editInputValue: e });
 };
-//编辑--enter键
 onKeyUp(e) {
   if (e.keyCode === 13) {
     this.handleEditInputConfirm();
   }
 }
-//6.响应每次编辑变化确定功能
 handleEditInputConfirm(){
   this.setState(({ dynamicTags, editInputIndex, editInputValue }) => {
     const newTags = [...dynamicTags];
@@ -236,7 +228,7 @@ handleEditInputConfirm(){
   };
 render() {
    const {
-      editInputIndex, //初始化是 -1
+      editInputIndex,
       editInputValue,
     } = this.state;
   return (
@@ -255,7 +247,6 @@ render() {
                   this.handleEditInputChange(e)
                 }}
                 onBlur={this.handleEditInputConfirm.bind(this)}
-                // onPressEnter={this.handleEditInputConfirm.bind(this)}
                 onKeyUp={this.onKeyUp.bind(this)}
               />
             );
@@ -281,7 +272,7 @@ render() {
           return tagElem
         })
       }
-      {/* 新增tag功能 */}
+      
       {
         this.state.inputVisible&&(
           <Input
@@ -302,6 +293,164 @@ render() {
 }
 ```
 
+:::
+
+### 带有下拉和新增选项页签
+
+动态编辑和新增标签,在新增和编辑的时候 可以下拉选择或者新增一个，并触发对应新增和编辑的方法
+
+:::demo
+
+``` js
+constructor(props) {
+  super(props);
+
+  this.state = {
+    dynamicTags: ['标签一', '标签二', '标签三'],
+    inputVisible: false,
+    inputValue: '',
+    editInputIndex: -1,
+    editInputValue: "",
+    options: [{
+      value: 'k_1',
+      label: 'react'
+    }, {
+      value: 'k_2',
+      label: 'vue'
+    }, {
+      value: 'k_3',
+      label: 'ng'
+    }, {
+      value: 'k_4',
+      label: 'rxjs'
+    }, {
+      value: 'k_5',
+      label: 'redux'
+    }],
+    value: '',
+    id: null,
+  }
+  
+  this.onChangeTypeAdd = this.onChangeTypeAdd.bind(this)
+  this.handleInputConfirm = this.handleInputConfirm.bind(this)
+  this.onChangeEditType = this.onChangeEditType.bind(this)
+}
+handleClose(removedTag){
+  const dynamicTags = this.state.dynamicTags.filter((tag) => tag !== removedTag);
+  this.setState({ dynamicTags });
+};
+
+showInput() {
+  this.setState({ inputVisible: true });
+}
+onChangeTypeAdd(value, option) {
+  this.setState(
+    {
+      inputValue: option.props.label,
+    },
+    () => {
+      this.handleInputConfirm();
+    }
+  );
+};
+handleInputConfirm() {
+  const { inputValue,dynamicTags } = this.state;
+  let arr = dynamicTags;
+  arr.push(inputValue);
+
+  this.setState(
+    {
+      dynamicTags: arr,
+      inputVisible: false,
+      inputValue: "",
+    },
+    () => {
+      this.setState({
+        id: null,
+        inputVisible: false,
+      });
+    }
+  );
+};
+onChangeEditType(e, index, option){
+  let dynamicTags = this.state.dynamicTags;  
+  dynamicTags[index] = option.props.label;
+
+  this.setState(
+    {
+      dynamicTags,
+      editInputIndex: -1,
+    }
+  );
+};
+
+render() {
+   const {
+      editInputIndex,
+      editInputValue,
+    } = this.state;
+  return (
+    <div>
+      
+      {
+        this.state.dynamicTags.map((tag, index) => {
+          if (editInputIndex === index) {
+            return (
+              <Select placeholder="请选择"  filterable={true}  
+                onChange={(value, option) =>
+                  this.onChangeEditType(value, index, option)
+                }
+                >
+                {
+                  this.state.options.map(el => {
+                    return <Select.Option key={el.value} label={el.label} value={el.value}/>
+                  })
+                }
+              </Select>
+
+            );
+          }
+          const tagElem =(
+            <Tag
+              key={index}
+              closable={true}
+              closeTransition={false}
+              onClose={this.handleClose.bind(this, index)}>
+               <span
+                onClick={(e) => {
+                  this.setState(
+                    { editInputIndex: index, editInputValue: tag },
+                  );
+                  e.preventDefault();
+                }}
+              >
+                {tag}
+              </span>
+              </Tag>
+          )
+          return tagElem
+        })
+      }
+      {
+        this.state.inputVisible&&(
+         <Select value={this.state.value} placeholder="请选择"  filterable={true}  
+            onChange={(value, option) =>
+              this.onChangeTypeAdd(value, option)
+            }
+            >
+            {
+              this.state.options.map(el => {
+                return <Select.Option key={el.value} label={el.label} value={el.value}/>
+              })
+            }
+          </Select>
+        )
+      }
+      <Button className="button-new-tag" size="small" onClick={this.showInput.bind(this)}>+ New Tag</Button>
+    </div>
+  )
+}
+```
 :::
 
 ### Attributes
